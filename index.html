@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myelin CE — Rigorous continuing education for pan-disciplinary practitioners</title>
+<meta name="description" content="Myelin CE — accredited, evidence-based continuing education in AI, neuroscience, ethics, and psychedelic care for counselors, social workers, psychologists, healthcare providers, and attorneys. Presented by RN Collins.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F7F3EC; --paper:#FCFAF5; --plum:#4A2A4E; --plum2:#6B3F6E; --amber:#C6892B; --amber-soft:#E9C98A;
+  --ink:#2A2431; --muted:#6C6472; --line:#E6DDCF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.15;letter-spacing:-.01em}
+a{color:var(--plum2);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:600}
+.btn{display:inline-block;background:var(--plum);color:#fff;padding:13px 26px;border-radius:999px;font-weight:600;font-size:.95rem;transition:background .2s}
+.btn:hover{background:var(--plum2);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--plum);border:1.5px solid var(--plum)}
+.btn.ghost:hover{background:var(--plum);color:#fff}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(247,243,236,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:1.35rem;color:var(--plum)}
+.mark{width:34px;height:34px;border-radius:50%;background:var(--plum);display:grid;place-items:center;flex:0 0 auto}
+.mark svg{width:20px;height:20px}
+.nav-links{display:flex;gap:26px;align-items:center;font-size:.92rem}
+.nav-links a{color:var(--ink)}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(1100px 480px at 78% -10%, rgba(107,63,110,.22), transparent 60%),
+  radial-gradient(760px 420px at 8% 120%, rgba(198,137,43,.16), transparent 60%),
+  var(--cream)}
+.hero-inner{padding:92px 0 76px}
+.hero h1{font-size:clamp(2.4rem,5.4vw,3.9rem);margin:16px 0 8px;color:var(--plum)}
+.hero .tag{font-size:1.3rem;font-family:'Fraunces',serif;color:var(--ink);max-width:640px;margin:6px 0 14px}
+.hero p.sub{font-size:1.06rem;color:var(--muted);max-width:600px}
+.hero .cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+.stats{display:flex;gap:34px;margin-top:46px;flex-wrap:wrap}
+.stat b{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--plum2);display:block;line-height:1}
+.stat span{font-size:.82rem;color:var(--muted);letter-spacing:.02em}
+
+section{padding:74px 0}
+.section-head{max-width:660px;margin-bottom:38px}
+.section-head h2{font-size:clamp(1.7rem,3.4vw,2.3rem);color:var(--plum);margin:10px 0}
+.section-head p{color:var(--muted);font-size:1.04rem}
+
+/* philosophy */
+.philo{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.philo-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+@media(max-width:820px){.philo-grid{grid-template-columns:1fr;gap:28px}}
+.philo blockquote{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--ink);line-height:1.35;border-left:3px solid var(--amber);padding-left:22px}
+.philo p{color:var(--muted);margin-top:16px}
+
+/* courses */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px;transition:transform .18s,box-shadow .18s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(74,42,78,.10)}
+.card .code{display:inline-block;font-family:'Fraunces',serif;font-size:.82rem;font-weight:600;color:#fff;background:var(--plum2);border-radius:6px;padding:3px 9px;letter-spacing:.04em}
+.card .hrs{float:right;font-size:.8rem;color:var(--amber);font-weight:600;letter-spacing:.03em}
+.card h3{font-size:1.18rem;margin:14px 0 8px;color:var(--ink)}
+.card p{font-size:.94rem;color:var(--muted)}
+.card .credit{margin-top:14px;font-size:.78rem;color:var(--plum2);border-top:1px dashed var(--line);padding-top:12px}
+.tagpill{display:inline-block;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber-soft);border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+
+/* presenter */
+.presenter{background:linear-gradient(180deg,var(--paper),var(--cream))}
+.pres-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}
+@media(max-width:820px){.pres-grid{grid-template-columns:1fr}}
+.credlist{list-style:none;margin-top:18px}
+.credlist li{padding:9px 0;border-bottom:1px solid var(--line);font-size:.96rem;display:flex;gap:10px}
+.credlist li::before{content:"—";color:var(--amber);font-weight:700}
+
+/* accreditation */
+.accred .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:760px){.accred .grid3{grid-template-columns:1fr}}
+.abox{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px}
+.abox h4{font-family:'Fraunces',serif;color:var(--plum);font-size:1.05rem;margin-bottom:8px}
+.abox ul{list-style:none;font-size:.9rem;color:var(--muted)}
+.abox li{padding:3px 0}
+.status{display:inline-flex;align-items:center;gap:8px;background:#FBF2DC;color:#8A5A16;border:1px solid var(--amber-soft);border-radius:999px;padding:6px 15px;font-size:.85rem;font-weight:600;margin-bottom:26px}
+.status .dot{width:8px;height:8px;border-radius:50%;background:var(--amber);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* cta */
+.register{background:var(--plum);color:#fff;border-radius:22px;padding:52px 44px;text-align:center}
+.register h2{color:#fff;font-size:2rem}
+.register p{color:#E7DAEA;max-width:520px;margin:12px auto 26px}
+.register form{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.register input{flex:1;min-width:220px;padding:13px 16px;border-radius:999px;border:none;font-size:.95rem;font-family:inherit}
+.register .btn{background:var(--amber);color:#2A1E0C}
+.register .btn:hover{background:var(--amber-soft)}
+.register small{display:block;margin-top:16px;color:#CDBBD0;font-size:.8rem}
+
+footer{background:var(--paper);border-top:1px solid var(--line);padding:40px 0;font-size:.86rem;color:var(--muted)}
+.foot-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot-note{max-width:560px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12c2.2 0 2.2-5 4.4-5S10.6 12 12.8 12s2.2 5 4.4 5 2.2-5 2.8-5" stroke="#E9C98A" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="1.6" fill="#E9C98A"/></svg></span>
+      Myelin&nbsp;CE
+    </div>
+    <nav class="nav-links">
+      <a href="#philosophy">Philosophy</a>
+      <a href="#courses">Courses</a>
+      <a href="#library">Library</a>
+      <a href="#presenter">Presenter</a>
+      <a href="#accreditation">Accreditation</a>
+      <a href="#register" class="btn" style="padding:9px 20px">Get notified</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Continuing Education · RN Collins</span>
+    <h1>Myelin&nbsp;CE</h1>
+    <p class="tag">Faster signal. Less loss. Rigorous continuing education for pan-disciplinary practitioners.</p>
+    <p class="sub">Evidence-based, primary-source continuing education in artificial intelligence, neuroscience, ethics, and psychedelic care — for counselors, social workers, psychologists, healthcare providers, and attorneys.</p>
+    <div class="cta">
+      <a href="#courses" class="btn">Explore the catalog</a>
+      <a href="myelin-ce-free-guide.html" class="btn ghost">Get the free guide</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>125</b><span>courses in the catalog</span></div>
+      <div class="stat"><b>11</b><span>ready at launch</span></div>
+      <div class="stat"><b>12</b><span>subject series</span></div>
+      <div class="stat"><b>NBCC</b><span>ACEP application in progress</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="philo" id="philosophy">
+  <div class="wrap philo-grid">
+    <div>
+      <span class="eyebrow">The philosophy</span>
+      <blockquote>Myelin is the sheath that lets a signal travel farther, faster, and without loss — and the nervous system only invests in the pathways that carry signals that matter.</blockquote>
+      <p>That is the standard behind every Myelin CE course. We don't generate noise; we insulate the signal. Each course is built from primary sources, audited word-for-word across four version cycles, and citation-verified — so what you learn is precise, current, and defensible in your practice.</p>
+    </div>
+    <div>
+      <span class="eyebrow">Built for rigor</span>
+      <ul class="credlist">
+        <li>Primary-source citations, verified against original research</li>
+        <li>Four-cycle correction and QA on every course</li>
+        <li>Timed agendas, learning outcomes, and evaluation forms per course</li>
+        <li>Ethics courses aligned to NASW, ACA, APA, and ABA standards</li>
+        <li>Neuroscience-grounded, pan-disciplinary framing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="courses">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Catalog</span>
+      <h2>AI CE Series</h2>
+      <p>Eight courses · 14 CE hours · presented by RN Collins. Credit targets: NBCC, ASWB, APA, and attorney professional development.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="code">AI-1</span><span class="hrs">2.0 hrs</span><h3>AI Tools in Mental Health Practice</h3><p>How clinicians can evaluate and responsibly use AI tools in assessment, documentation, and care — with the evidence base and the limits.</p><div class="credit">Credit target · NBCC / ASWB / APA</div></div>
+      <div class="card"><span class="code">AI-2</span><span class="hrs">2.0 hrs</span><h3>Algorithmic Bias, Equity, and Mental Health AI</h3><p>Where bias enters clinical AI, how it shows up in practice, and what equitable, verified use looks like.</p><div class="credit">Credit target · NBCC / ASWB</div></div>
+      <div class="card"><span class="code">AI-3</span><span class="hrs">1.5 hrs</span><h3>AI, Privacy, and Informed Consent <span class="tagpill">Ethics</span></h3><p>Confidentiality, HIPAA, 42 CFR Part 2, and informed consent for technology-assisted services — grounded in NASW and ACA standards.</p><div class="credit">Credit target · NBCC ethics / ASWB ethics</div></div>
+      <div class="card"><span class="code">AI-4</span><span class="hrs">2.0 hrs</span><h3>The Neuroscience of Human-AI Decision Making</h3><p>How the brain forms trust in and defers to AI — and how to keep human judgment in the loop.</p><div class="credit">Credit target · NBCC / APA + attorney non-CLE PD</div></div>
+      <div class="card"><span class="code">AI-5</span><span class="hrs">2.0 hrs</span><h3>AI Ethics in Healthcare <span class="tagpill">Ethics</span></h3><p>The four-principle framework and its limits for AI — explainability, distributed harm, and systemic accountability.</p><div class="credit">Credit target · NBCC / ASWB / APA ethics</div></div>
+      <div class="card"><span class="code">AI-6</span><span class="hrs">2.0 hrs</span><h3>AI Tools in Legal Practice</h3><p>Verified legal-AI tools and the professional-responsibility duties (incl. ABA Formal Opinion 512) that govern their use.</p><div class="credit">Credit target · NBCC + attorney non-CLE PD</div></div>
+      <div class="card"><span class="code">AI-7</span><span class="hrs" style="color:var(--amber)">FREE &middot; 1.0 hr</span><h3>Understanding Large Language Models</h3><p>What LLMs and retrieval-augmented generation actually do — and the domain-specific hallucination patterns to watch for.</p><div class="credit">Credit target · NBCC / ASWB / facilitator CE</div></div>
+      <div class="card"><span class="code">AI-8</span><span class="hrs">1.5 hrs</span><h3>AI in Psychedelic Care and Emerging Therapies</h3><p>AI across MDMA-assisted therapy, ketamine, and ibogaine programs — with the safety and evidentiary caveats.</p><div class="credit">Credit target · NBCC / facilitator CE</div></div>
+    </div>
+
+    <div class="section-head" style="margin-top:60px">
+      <span class="eyebrow">Catalog</span>
+      <h2>Psychedelic CE Series</h2>
+      <p>Three courses · 9 CE hours. Presented by RN Collins.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="code">FC-4</span><span class="hrs">4.0 hrs</span><h3>Ethics in Facilitation Practice</h3><p>A rigorous ethics foundation for psychedelic facilitation. <em>Currently live.</em></p><div class="credit">Facilitator CE</div></div>
+      <div class="card"><span class="code">FC-1</span><span class="hrs">2.0 hrs</span><h3>Neuroscience for Facilitators</h3><p>The nervous-system science facilitators need — set, setting, safety, and integration.</p><div class="credit">Facilitator CE</div></div>
+      <div class="card"><span class="code">HP-1</span><span class="hrs">3.0 hrs</span><h3>Neuroscience for Healthcare Providers + Attorneys</h3><p>Cross-disciplinary neuroscience for clinicians and legal professionals working in emerging-therapeutics.</p><div class="credit">Healthcare + attorney professional development</div></div>
+    </div>
+    <p style="margin-top:22px;font-size:.9rem;color:var(--muted)">CLE tracks (Psychedelic Law 101 · Ethics 102 · State Frameworks 103) are in development and launch once a licensed co-presenter is confirmed.</p>
+  </div>
+</section>
+
+<section style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)" id="library">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The full library</span>
+      <h2>Twelve series · 100+ courses</h2>
+      <p>The 11 courses above are the launch set — built and submission-ready. RN Collins' credentials support an exhaustive, pan-disciplinary slate developed on a rolling basis:</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Neuroscience for Practitioners</h3><p>Stress, trauma, allostatic load, burnout, cognitive aging, polyvagal-informed practice, biophilic settings. (12)</p></div>
+      <div class="card"><h3>Cannabis Medicine &amp; Policy</h3><p>Endocannabinoid system, pharmacology, mental health, adolescent brain, workplace, clinical social work. (12)</p></div>
+      <div class="card"><h3>Psychoactive Plant Science &amp; PAT</h3><p>Psychedelics as medicine, preparation &amp; integration, harm reduction, MDMA/ketamine, end-of-life. (15)</p></div>
+      <div class="card"><h3>AI for Professionals</h3><p>Profession-specific AI tools for social workers, counselors, nurses, paralegals, coaches, public health, HR. (16)</p></div>
+      <div class="card"><h3>AI Governance, Ethics &amp; Policy</h3><p>Governance frameworks, healthcare bias, privacy/HIPAA, EU AI Act, organizational AI policy. (10)</p></div>
+      <div class="card"><h3>Drug Policy &amp; Law</h3><p>CSA, harm-reduction policy, end-of-life law, hemp/CBD/THC, FDA/DEA research frameworks. (10)</p></div>
+      <div class="card"><h3>Research Literacy &amp; Science Communication</h3><p>Reading trials, systematic reviews, evaluating AI claims, communicating complex science. (7)</p></div>
+      <div class="card"><h3>Organizational Design &amp; Systems</h3><p>Trauma-informed and nervous-system-aware design, burnout prevention, AI-adoption behavior. (8)</p></div>
+      <div class="card"><h3>Curriculum Design &amp; Education</h3><p>Building CE programs, adult-learning theory, inclusive pedagogy, cross-cultural competency. (6)</p></div>
+      <div class="card"><h3>Developmental Psychology</h3><p>Child/adolescent brain development, lifespan cognition, cannabis &amp; psychedelics by developmental stage. (5)</p></div>
+      <div class="card"><h3>Bioethics &amp; Research Ethics</h3><p>IRB/consent, emerging-therapy ethics, disability, implicit bias, racial health disparities. (6)</p></div>
+      <div class="card"><h3>Patent, Technology &amp; Innovation</h3><p>Patent literacy, commercialization, AI &amp; IP ownership, evaluating new health tech. (4)</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="presenter" id="presenter">
+  <div class="wrap pres-grid">
+    <div>
+      <span class="eyebrow">Presenter</span>
+      <h2 class="serif" style="font-size:2rem;color:var(--plum);margin-top:8px">RN Collins</h2>
+      <p style="color:var(--muted);margin-top:10px">Neuroscientist and legal scholar building continuing education at the intersection of brain science, AI, ethics, and emerging-therapeutics regulation.</p>
+    </div>
+    <div>
+      <ul class="credlist">
+        <li>M.S., Anatomy &amp; Neurobiology — Boston University School of Medicine</li>
+        <li>M.A., Developmental Psychology — CUNY</li>
+        <li>B.A., Psychology — University of Pennsylvania</li>
+        <li>J.D. Candidate — Northeastern University School of Law</li>
+        <li>Graduate Anatomy Instructor &amp; Prosector — BU School of Medicine</li>
+        <li>Research Neuroscientist — Harvard Business School</li>
+        <li>Regulatory &amp; Compliance Research Consultant — Yale Program for Psychedelic Science (IRB / FDA / DEA)</li>
+        <li>Five peer-reviewed publications in neuroscience, health equity, and psychedelic medicine</li>
+        <li>Primary-source research methodology across every course</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="accred" id="accreditation">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="status"><span class="dot"></span> NBCC ACEP provider application in progress</div>
+      <span class="eyebrow">Accreditation</span>
+      <h2>Credit pathways</h2>
+      <p>Course content is submission-ready. Provider accreditation is in progress — join the list to be notified as each pathway is confirmed.</p>
+    </div>
+    <div class="grid3">
+      <div class="abox"><h4>Clinical / healthcare</h4><ul><li>NBCC — counselors</li><li>NASW / ASWB — social workers</li><li>APA — psychologists</li><li>NAADAC — addiction professionals</li><li>ANCC — nurses</li><li>AOTA — occupational therapists</li><li>ASHA — speech-language</li><li>APHA · SOPHE — public health</li><li>HIMSS · AMIA — health IT / informatics</li></ul></div>
+      <div class="abox"><h4>Legal &amp; business</h4><ul><li>NALA · NFPA — paralegals</li><li>HRCI · SHRM — HR</li><li>ICF — coaches</li><li>PMI — project managers</li><li>ISACA — IT governance / AI risk</li><li>IAPP — privacy</li><li>ACFE — fraud examiners</li><li>Attorney non-CLE professional development</li></ul></div>
+      <div class="abox"><h4>Facilitator &amp; direct-to-market</h4><ul><li>Oregon OAR 333-333-3300 (via NBCC)</li><li>Colorado DORA Natural Medicine CE</li><li>ACHE — healthcare administrators</li><li>Health coaches &amp; wellness practitioners</li><li>Peer support specialists</li><li>Real estate &amp; CFP (course-approval tracks)</li></ul></div>
+    </div>
+    <p style="margin-top:18px;font-size:.85rem;color:var(--muted)">Immediate provider-application priority: <strong>NBCC · NASW · NAADAC</strong> — audiences that already care about AI, psychedelics, and harm reduction.</p>
+  </div>
+</section>
+
+<section id="register">
+  <div class="wrap">
+    <div class="register">
+      <span class="eyebrow" style="color:var(--amber-soft)">Free · Evidence-based</span>
+      <h2>Get the free guide — and launch updates</h2>
+      <p>Download <em>AI in Mental-Health Practice: What the Evidence Actually Shows</em> — a free, primary-source briefing — and be first to know when courses and credit go live. (Plus a free 1-hour course, AI-7, at launch.)</p>
+      <form onsubmit="event.preventDefault();window.open('myelin-ce-free-guide.html','_blank');this.querySelector('.done').style.display='block';this.querySelector('input').value='';">
+        <input type="email" required placeholder="you@practice.com" aria-label="Email">
+        <button class="btn" type="submit">Send me the free guide</button>
+        <small class="done" style="display:none">Thank you — opening your guide, and you're on the list.</small>
+      </form>
+      <small>Myelin CE is a continuing-education brand of Rayven-Nikkita Collins LLC.</small>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-note">
+      <strong style="font-family:'Fraunces',serif;color:var(--plum);font-size:1.05rem">Myelin&nbsp;CE</strong>
+      <p style="margin-top:6px">Rigorous continuing education for pan-disciplinary practitioners. A continuing-education brand of Rayven-Nikkita Collins LLC.</p>
+    </div>
+    <div style="text-align:right">
+      <p>© 2026 Rayven-Nikkita Collins LLC</p>
+      <p style="margin-top:4px"><a href="#courses">Courses</a> · <a href="#accreditation">Accreditation</a> · <a href="#register">Get notified</a></p>
+    </div>
+  </div>
+</footer>
+
+<div id="cModal" class="cmodal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="cbox"><button class="cx" aria-label="Close" onclick="document.getElementById('cModal').classList.remove('open')">&times;</button><div id="cContent"></div></div>
+</div>
+<style>
+.cmodal{position:fixed;inset:0;background:rgba(42,36,49,.55);display:none;align-items:center;justify-content:center;z-index:100;padding:24px}
+.cmodal.open{display:flex}
+.cbox{background:var(--paper);max-width:640px;width:100%;max-height:86vh;overflow:auto;border-radius:18px;padding:34px 34px 30px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.32)}
+.cx{position:absolute;top:14px;right:18px;border:none;background:none;font-size:1.7rem;color:var(--muted);cursor:pointer;line-height:1}
+.cbox h3{font-family:'Fraunces',serif;color:var(--plum);font-size:1.5rem;margin-bottom:4px;padding-right:24px}
+.cbox .m{color:var(--amber);font-weight:600;font-size:.82rem;letter-spacing:.03em;margin-bottom:14px}
+.cbox h4{font-family:'Fraunces',serif;color:var(--plum2);margin:18px 0 6px;font-size:1.02rem}
+.cbox ul{margin-left:18px;color:var(--ink);font-size:.94rem}
+.cbox li{margin:5px 0}
+.card[data-open]{cursor:pointer}
+.card[data-open]:hover .code{background:var(--amber)}
+.card .more{display:block;margin-top:13px;font-size:.78rem;color:var(--plum2);font-weight:600}
+</style>
+<script>
+const COURSES={
+"AI-1":{t:"AI Tools in Mental Health Practice",h:"2.0 hrs",c:"NBCC / ASWB / APA",o:["Evaluate AI mental-health tools against the clinical evidence","Distinguish appropriate from inappropriate clinical uses","Apply confidentiality and informed-consent safeguards"],u:["The current landscape of clinical AI tools","Evidence review (incl. Wysa / Inkster et al. 2018)","Documentation and workflow applications","Limits, risks, and red flags","Case vignette"],e:["Inkster, Sarda & Subramanian (2018), Wysa — JMIR mHealth uHealth, 6(11):e12106"],s:"Built — v4, submission-ready (four audit cycles, citation-verified)."},
+"AI-2":{t:"Algorithmic Bias, Equity, and Mental Health AI",h:"2.0 hrs",c:"NBCC / ASWB",o:["Explain where bias enters clinical AI systems","Recognize disparate impact in practice","Apply equity checks before adopting a tool"],u:["Sources of algorithmic bias","Gender Shades error-rate findings","Racial bias in assessment (Hoffman 2016)","Mitigation strategies","Equity in day-to-day practice"],e:["Hoffman KM et al. (2016), PNAS — doi:10.1073/pnas.1516047113","Buolamwini & Gebru, Gender Shades"],s:"Built — v4, submission-ready."},
+"AI-3":{t:"AI, Privacy, and Informed Consent",h:"1.5 hrs · Ethics",c:"NBCC ethics / ASWB ethics",o:["Apply NASW 1.03/1.07 and the 2017 Technology Standards","Navigate HIPAA and 42 CFR Part 2 for AI use","Draft informed consent for technology-assisted services"],u:["Confidentiality duties","HIPAA four-tier penalty structure","42 CFR Part 2 (2024 revision)","Informed consent (ACA H.2.a)","Practice protocol"],e:["NASW Code §§1.03, 1.07 + 2017 Technology Standards","42 CFR Part 2 (eff. Feb 16, 2024)"],s:"Built — v4, submission-ready."},
+"AI-4":{t:"The Neuroscience of Human-AI Decision Making",h:"2.0 hrs",c:"NBCC / APA + attorney PD",o:["Describe how trust in and deference to AI forms","Recognize automation bias","Keep human judgment in the loop"],u:["Cognitive heuristics and reflection","Pennycook et al. 2015","Automation bias","Professional duties (ABA Op. 512)","Safeguards"],e:["Pennycook et al. (2015), Judgment and Decision Making, 10(6):549-563","ABA Formal Opinion 512 (2024)"],s:"Built — v4, submission-ready."},
+"AI-5":{t:"AI Ethics in Healthcare",h:"2.0 hrs · Ethics",c:"NBCC / ASWB / APA ethics",o:["Apply the four-principle bioethics framework","Identify its limits for AI systems","Address explainability, distributed harm, and accountability"],u:["Beauchamp & Childress principles","The limits of existing frameworks for AI","WHO six principles","Systemic accountability","Cases"],e:["Beauchamp & Childress (2019), Principles of Biomedical Ethics, 8th ed.","WHO, Ethics & Governance of AI for Health"],s:"Built — v4, submission-ready."},
+"AI-6":{t:"AI Tools in Legal Practice",h:"2.0 hrs",c:"NBCC + attorney PD",o:["Identify verified legal-AI tools by function","Apply professional-responsibility duties","Avoid competence and confidentiality pitfalls"],u:["Legal-AI landscape (research vs. drafting)","ABA Opinion 512 duties","Verification discipline","Tools (CoCounsel, Spellbook, Robin AI)","Practice"],e:["ABA Formal Opinion 512 (2024)"],s:"Built — v4, submission-ready."},
+"AI-7":{t:"Understanding Large Language Models",h:"1.0 hr · FREE",c:"NBCC / ASWB / facilitator CE",o:["Explain what LLMs and retrieval-augmented generation do","Recognize domain-specific hallucination patterns","Prompt more reliably in clinical and legal contexts"],u:["How large language models work","Retrieval-augmented generation (RAG)","Hallucination patterns (clinical & legal)","The fluency heuristic","Case vignette"],e:["Alter & Oppenheimer (2009), fluency heuristic"],s:"FREE taster course — built (v4). Offered free as the introduction to the catalog."},
+"AI-8":{t:"AI in Psychedelic Care and Emerging Therapies",h:"1.5 hrs",c:"NBCC / facilitator CE",o:["Survey AI across MDMA-AT, ketamine, and ibogaine programs","Apply the relevant safety caveats","Evaluate vendor and research claims"],u:["AI in emerging therapies","Kaelen (2018) — Imperial College London","Ketamine platforms (e.g., Osmind)","Ibogaine cardiac/QTc safety","Evidence limits"],e:["Kaelen et al. (2018), Imperial College London"],s:"Built — v4, submission-ready."},
+"FC-4":{t:"Ethics in Facilitation Practice",h:"4.0 hrs",c:"Facilitator CE",o:["Apply an ethics framework to psychedelic facilitation","Manage scope, consent, and power dynamics","Respond to adverse events and referrals"],u:["Ethical foundations","Consent and scope of practice","Power dynamics","Safety and referral","Case studies"],e:[],s:"Live."},
+"FC-1":{t:"Neuroscience for Facilitators",h:"2.0 hrs",c:"Facilitator CE",o:["Explain the nervous-system science behind set and setting","Support safety and integration on neuroscience grounds"],u:["Nervous-system basics","Set and setting","Safety","Integration","Practice"],e:[],s:"Built — v4, submission-ready."},
+"HP-1":{t:"Neuroscience for Healthcare Providers + Attorneys",h:"3.0 hrs",c:"Healthcare + attorney PD",o:["Apply cross-disciplinary neuroscience to emerging-therapeutics work","Bridge clinical and legal/regulatory framing"],u:["Core neuroscience","Clinical relevance","Legal and regulatory context","Applications"],e:[],s:"Built — v4, submission-ready."}
+};
+document.querySelectorAll('.card').forEach(function(c){var code=c.querySelector('.code');if(code&&COURSES[code.textContent.trim()]){c.setAttribute('data-open','1');var m=document.createElement('span');m.className='more';m.textContent='View details →';c.appendChild(m);c.addEventListener('click',function(){openC(code.textContent.trim());});}});
+function openC(k){var d=COURSES[k];var h='<h3>'+d.t+'</h3><div class="m">'+k+' &middot; '+d.h+' &middot; '+d.c+'</div>';h+='<h4>Learning objectives</h4><ul>'+d.o.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';h+='<h4>Outline</h4><ul>'+d.u.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';if(d.e&&d.e.length){h+='<h4>Evidence base</h4><ul>'+d.e.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';}h+='<h4>Status</h4><ul><li>'+d.s+'</li></ul>';document.getElementById('cContent').innerHTML=h;document.getElementById('cModal').classList.add('open');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('cModal').classList.remove('open');});
+</script>
+<style>
+.slist{list-style:none;margin:14px 0 0}
+.slist li{padding:11px 14px;border:1px solid var(--line);border-radius:10px;margin:8px 0;font-size:.95rem;background:var(--cream);cursor:pointer;transition:border-color .15s,background .15s}
+.slist li:hover{border-color:var(--amber);background:#fff}
+.cback{border:none;background:none;color:var(--plum2);font-weight:600;font-size:.85rem;cursor:pointer;margin-bottom:10px;padding:0}
+</style>
+<script>
+const SERIES={
+"Neuroscience for Practitioners":["The Nervous System Explained: Stress, Trauma, and Healing","Allostatic Load and Health","Trauma Physiology for Clinicians","Burnout Is a Brain Issue: Neuroscience of Burnout and Recovery","Cognitive Aging: Memory, Learning, and Brain Health","How the Brain Learns: Neuroscience of Adult Education","Neuroimaging Literacy: What Brain Scans Can and Cannot Tell You","The Biology of Racial Health Disparities","The Built Environment and the Brain: Biophilic Design","Stress Biology for Healthcare Professionals (HPA Axis, Cortisol)","Nervous-System-Aware Practice (Polyvagal Principles)","Anatomy Literacy for Non-Physicians"],
+"Cannabis Medicine & Policy":["The Endocannabinoid System","Cannabis Pharmacology for Healthcare Providers","Cannabis and Mental Health: Anxiety, Depression, Psychosis Risk","Medical Cannabis Patient Education","Cannabis for Pain Management: The Clinical Evidence","Cannabis and Adolescent Brain Development","Cannabis Destigmatization for Healthcare Providers","Cannabis in the Workplace: Testing, Accommodation, Policy","Cannabis Law 101 for Non-Attorneys","Cannabis in Clinical Social Work","Cannabis and End-of-Life Care","Medical Cannabis and Psychiatric Medications: Interactions"],
+"Psychoactive Plant Science & PAT":["Psychedelics as Medicine: The Clinical Evidence Base","Psilocybin, MDMA, and Ketamine: Mechanisms of Action","Psychedelic-Assisted Therapy Preparation","Psychedelic Integration Fundamentals","Set, Setting, and the Therapeutic Frame","Harm Reduction for Psychedelic Use","MDMA for PTSD: What the Research Shows","Ketamine in Clinical Contexts","Screening and Contraindications for Psychedelic Work","Psychedelics and End-of-Life: Existential Distress","The History of Psychedelics","Psychedelic Policy for Healthcare Professionals","Ayahuasca, Ibogaine, and the Global Landscape","Psychedelic Harm Reduction in Community Settings","Cannabis and Psychedelics Together (Polysubstance Contexts)"],
+"AI for Professionals":["AI Tools for Social Workers","AI Tools for Counselors and Therapists","AI Tools for Nurses","AI Tools for Substance Abuse Counselors","AI Tools for Occupational Therapists","AI Tools for Speech-Language Pathologists","AI Tools for Health Educators","AI Tools for HR Professionals","AI Tools for Project Managers","AI Tools for Paralegals","AI Tools for Coaches","AI Tools for Public Health Professionals","AI Literacy for Healthcare Professionals","How Large Language Models Actually Work","Prompt Engineering for Healthcare and Human Services","AI-Assisted Documentation"],
+"AI Governance, Ethics & Policy":["AI Governance Fundamentals","AI Ethics in Healthcare: Bias, Equity, Accountability","AI and Health Equity: Algorithmic Bias","AI Privacy and Data Security: HIPAA Implications","The EU AI Act and U.S. Healthcare/Human Services","AI in Behavioral Health","Building an AI Policy for Your Organization","AI Workflow Design for Clinical Settings","AI and Intellectual Property","State AI Governance Laws"],
+"Drug Policy & Law":["Drug Policy Reform: History and Landscape","The Controlled Substances Act Explained","International Drug Policy: UN Conventions and Reform","Cannabis Law for Non-Attorneys","Harm Reduction Policy: Legal Frameworks","End-of-Life Law: MAID and the Psychedelic Landscape","Constitutional Law and Cannabis","FDA and DEA Frameworks for Controlled Substances Research","Informed Consent in Research and Clinical Practice","Hemp, CBD, and THC: The Regulatory Landscape"],
+"Research Literacy & Sci Comm":["How to Read a Clinical Trial","Systematic Reviews and Meta-Analyses","Research Literacy in Cannabis and Psychedelics","Evidence-Based Practice in Rapid Change","Science Communication for Practitioners","Legislative Analysis for Health & Human Services Professionals","How to Evaluate AI Research Claims"],
+"Organizational Design & Systems":["Trauma-Informed Systems Design","Nervous-System-Aware Workplace Design","Burnout Prevention at the Organizational Level","Biophilic Design for Clinical and Organizational Settings","Hempcrete, Mycelium, and Bio-Based Materials","Psychedelic Healthcare Workforce Development","Community Governance in Healthcare","AI Adoption in Organizations: The Behavioral Science"],
+"Curriculum Design & Education":["How to Build a CE Program","Adult Learning Theory Applied","Inclusive Pedagogy for Healthcare Educators","Science Communication Workshop","Cross-Cultural Competency in Healthcare","Early Childhood Language Acquisition and Adult Learning"],
+"Developmental Psychology":["Child and Adolescent Brain Development","Cognitive Development Across the Lifespan","Cannabis and the Adolescent Brain","Psychedelics and Developmental Psychology","Learning Theory and Professional Development"],
+"Bioethics & Research Ethics":["Research Ethics Fundamentals: IRB, Consent, Protection","Bioethics in Emerging Therapies","Disability and Healthcare","Caregiver Inclusion in the Healthcare Workforce","Implicit Bias in Medicine","Racial Health Disparities: Biological and Structural Mechanisms"],
+"Patent, Technology & Innovation":["Patent Literacy for Healthcare and Technology Professionals","Technology Commercialization in Health and Biotech","AI and Intellectual Property (Patent series)","Market Analysis for Emerging Health Technologies"]
+};
+document.querySelectorAll('#library .card').forEach(function(c){var h=c.querySelector('h3');if(h&&SERIES[h.textContent.trim()]){c.setAttribute('data-open','1');var m=document.createElement('span');m.className='more';m.textContent='View '+SERIES[h.textContent.trim()].length+' courses →';c.appendChild(m);c.addEventListener('click',function(){openSeries(h.textContent.trim());});}});
+function openSeries(name){var list=SERIES[name];var h='<h3>'+name+'</h3><div class="m">'+list.length+' courses · continuing-education library</div><ul class="slist">'+list.map(function(t){return '<li data-t="'+encodeURIComponent(t)+'">'+t+'</li>';}).join('')+'</ul><p style="margin-top:8px;font-size:.85rem;color:var(--muted)">Click any course for details.</p>';document.getElementById('cContent').innerHTML=h;document.getElementById('cModal').classList.add('open');document.querySelectorAll('.slist li').forEach(function(li){li.addEventListener('click',function(){openLib(decodeURIComponent(li.getAttribute('data-t')),name);});});}
+function openLib(t,series){var h='<button class="cback">← Back to '+series+'</button><h3>'+t+'</h3><div class="m">'+series+' · continuing-education course</div><h4>Overview</h4><ul><li>Evidence-based CE course, in development to the Myelin CE standard: primary-source, four-cycle audit, citation-verified.</li></ul><h4>Status</h4><ul><li>Planned — content to be authored. Credit hours and target bodies assigned at build.</li></ul>';document.getElementById('cContent').innerHTML=h;document.getElementById('cModal').classList.add('open');document.querySelector('.cback').addEventListener('click',function(){openSeries(series);});}
+</script>
+</body>
+</html>
