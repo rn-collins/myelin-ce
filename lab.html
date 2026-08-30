@@ -1,3 +1,604 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Applied Learning · Myelin</title><meta name="description" content="Applied, source-linked, non-credit professional AI learning."><style>
-:root{--p:#4a2a4e;--g:#c98d2e;--g-text:#916621;--bg:#f7f2e8;--paper:#fffdf8;--ink:#281f2b;--line:#ddd2c1}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.68 system-ui,-apple-system,Segoe UI,sans-serif}a{color:#6b3f6e}.wrap{max-width:980px;margin:auto;padding:1.2rem}header{background:var(--p);color:white}header .wrap{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}header strong{margin-right:auto}header a{color:white}h1,h2,h3{font-family:Georgia,serif;line-height:1.13}.hero{padding:3rem 0 1rem}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:800;color:var(--g-text)}h1{font-size:clamp(2.7rem,7vw,5rem);line-height:1;margin:.2em 0}.notice,.objective,.source{padding:1rem;border-radius:10px}.notice{background:#fff4d9;border:1px solid #d9ab5d}.objective{background:white;border-left:4px solid var(--g)}.picker,.actions{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}.pill,.btn{border:1px solid var(--p);border-radius:999px;padding:.65rem 1rem;background:transparent;color:var(--p);font-weight:750;text-decoration:none;cursor:pointer}.pill.active,.btn{background:var(--p);color:white}.meter{height:10px;background:#ddd;border-radius:10px;overflow:hidden}.meter i{display:block;height:100%;background:var(--g);transition:width .3s}.lesson,.quiz,.record{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:clamp(1.2rem,4vw,2rem);margin:1rem 0}.lesson details{border-top:1px solid var(--line);margin-top:1rem;padding-top:1rem}.lesson summary{cursor:pointer}.source{background:#f2edf3;font-size:.9rem}.answer{display:block;border:1px solid var(--line);padding:.7rem;margin:.45rem 0;border-radius:8px;cursor:pointer}.answer:has(input:checked){border-color:var(--p);background:#f2edf3}.record{display:none;border:2px solid var(--p)}.record.show{display:block}.data{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem}.data div{background:#f2edf3;padding:.7rem;border-radius:8px}.data strong{display:block}textarea{font:inherit;border:1px solid var(--line);border-radius:8px;resize:vertical}@media print{header,.picker,.quiz,.actions,.lesson,.notice,#deleteBtn{display:none!important}.record{display:block!important}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.meter i{transition:none}}
-</style><link rel="canonical" href="https://myelin-ce.vercel.app/lab"><meta property="og:type" content="website"><meta property="og:title" content="Applied Learning"><meta property="og:description" content="Applied, source-linked, non-credit professional AI learning."><meta property="og:url" content="https://myelin-ce.vercel.app/lab"><meta property="og:image" content="https://myelin-ce.vercel.app/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://myelin-ce.vercel.app/og.png"><link rel="icon" type="image/png" href="/icon-myelin-192.png"><link rel="apple-touch-icon" href="/icon-myelin-180.png"></head><body><header><div class="wrap"><strong>Myelin Learning Lab</strong><a href="/">Dashboard</a><a href="/briefs">Briefs</a><a href="/tools">Tools</a><a href="/status">Status</a></div></header><main class="wrap"><section class="hero"><div class="eyebrow" id="meta"></div><h1 id="title"></h1><p id="summary"></p><div class="notice"><strong>Non-credit boundary:</strong> This course awards 0.0 CE credits. It does not verify identity, confer an accredited certificate, or satisfy a licensing requirement.</div><nav class="picker" aria-label="Choose a course"><a class="pill" data-id="evidence" href="?course=evidence">EV-10 · Evidence</a><a class="pill" data-id="privacy" href="?course=privacy">PR-12 · Privacy</a><a class="pill" data-id="governance" href="?course=governance">GV-15 · Governance</a></nav><p id="progressText" aria-live="polite"></p><div class="meter" aria-hidden="true"><i id="bar"></i></div></section><section id="lessons"></section><section class="quiz"><div class="eyebrow">Applied mastery check</div><h2>Eight decisions—not trivia</h2><p>Complete all six scenarios and answer at least 7 of 8 questions correctly. Each response receives explanatory feedback.</p><form id="quiz"></form><button class="btn" form="quiz">Score attempt</button><p id="result" role="status" aria-live="polite"></p></section><section class="record" id="record"><div class="eyebrow">Browser-generated learning record</div><h2 id="recordTitle"></h2><div class="data"><div>Completed<strong id="completed"></strong></div><div>Mastery<strong id="score"></strong></div><div>Credit<strong>0.0 CE</strong></div><div>Record ID<strong id="recordId"></strong></div></div><p><strong>Not a certificate.</strong> Identity was not verified and no accreditor or licensing board approved this activity.</p><div class="actions"><button class="btn" id="printBtn">Print / save</button><button class="pill" id="exportBtn">Export record + exercises</button></div></section><button class="pill" id="deleteBtn">Delete this course’s local data</button></main><script src="/lab.js"></script></body></html>
+:root{--p:#4a2a4e;--g:#c98d2e;--g-text:#916621;--bg:#f7f2e8;--paper:#fffdf8;--ink:#281f2b;--line:#ddd2c1}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.68 system-ui,-apple-system,Segoe UI,sans-serif}a{color:#6b3f6e}.wrap{max-width:980px;margin:auto;padding:1.2rem}header{background:var(--p);color:white}header .wrap{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}header strong{margin-right:auto}header a{color:white}h1,h2,h3{font-family:Georgia,serif;line-height:1.13}.hero{padding:3rem 0 1rem}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:800;color:var(--g-text)}h1{font-size:clamp(2.7rem,7vw,5rem);line-height:1;margin:.2em 0}.notice,.objective,.source{padding:1rem;border-radius:10px}.notice{background:#fff4d9;border:1px solid #d9ab5d}.objective{background:white;border-left:4px solid var(--g)}.picker,.actions{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}.pill,.btn{border:1px solid var(--p);border-radius:999px;padding:.65rem 1rem;background:transparent;color:var(--p);font-weight:750;text-decoration:none;cursor:pointer}.pill.active,.btn{background:var(--p);color:white}.meter{height:10px;background:#ddd;border-radius:10px;overflow:hidden}.meter i{display:block;height:100%;background:var(--g);transition:width .3s}.lesson,.quiz,.record{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:clamp(1.2rem,4vw,2rem);margin:1rem 0}.lesson details{border-top:1px solid var(--line);margin-top:1rem;padding-top:1rem}.lesson summary{cursor:pointer}.source{background:#f2edf3;font-size:.9rem}.answer{display:block;border:1px solid var(--line);padding:.7rem;margin:.45rem 0;border-radius:8px;cursor:pointer}.answer:has(input:checked){border-color:var(--p);background:#f2edf3}.record{display:none;border:2px solid var(--p)}.record.show{display:block}.data{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem}.data div{background:#f2edf3;padding:.7rem;border-radius:8px}.data strong{display:block}textarea{font:inherit;border:1px solid var(--line);border-radius:8px;resize:vertical}@media print{header,.picker,.quiz,.actions,.notice,.read-guide{display:none!important}.lesson{break-inside:avoid}.record{display:block!important}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.meter i{transition:none}}
+.lead{font-size:1.05rem;max-width:70ch}.read-guide{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--p);border-radius:15px;padding:clamp(1.2rem,4vw,2rem);margin:1.6rem 0}.read-guide h2{margin-top:0;font-size:clamp(1.5rem,3.6vw,2.2rem)}.read-guide p{max-width:72ch}.course{margin:3rem 0;padding-top:1.5rem;border-top:3px solid var(--p);scroll-margin-top:1rem}.course-head h2{font-size:clamp(1.8rem,4.6vw,2.8rem);margin:.2em 0 .3em}.summary{max-width:70ch}.progressText{font-weight:750;color:var(--g-text);margin:.8rem 0 .4rem;font-size:.9rem}.lesson h3{font-size:clamp(1.2rem,3vw,1.6rem);margin:.2em 0 .5em}.lesson p,.lesson li{max-width:72ch}.apply>summary,.reveal-box>summary{font-weight:750;min-height:44px;display:flex;align-items:center}.reveal-box{border-top:1px dashed var(--line)}.apply label{display:block;font-weight:600;margin-top:.6rem;font-size:.92rem}.apply textarea{width:100%;padding:.7rem;margin:.5rem 0}.attest{display:flex;gap:.6rem;align-items:flex-start;background:#f5f1e9;padding:.75rem;border-radius:8px;margin-top:1rem;cursor:pointer}.attest input{margin-top:.25rem;width:18px;height:18px;flex:none}.quiz h3,.record h3{font-size:clamp(1.2rem,3vw,1.6rem);margin:.2em 0 .5em}fieldset{border:0;border-top:1px solid var(--line);padding:1rem 0;margin:0}fieldset legend{font-weight:750;padding-right:.5rem}.feedback{font-size:.88rem;margin:.5rem 0 0;color:#5d5061}.feedback.correct{color:#256448;font-weight:700}.feedback.incorrect{color:#993b2c;font-weight:700}.result{font-weight:750;margin-top:1rem}.btn,.pill{min-height:44px;display:inline-flex;align-items:center}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--p);outline-offset:2px}header a:focus-visible{outline-color:#f7d9a0}.lesson,.read-guide,.quiz{overflow-wrap:anywhere}@media(max-width:700px){.course{margin:2rem 0}}</style><link rel="canonical" href="https://myelin-ce.vercel.app/lab"><meta property="og:type" content="website"><meta property="og:title" content="Applied Learning"><meta property="og:description" content="Applied, source-linked, non-credit professional AI learning."><meta property="og:url" content="https://myelin-ce.vercel.app/lab"><meta property="og:image" content="https://myelin-ce.vercel.app/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://myelin-ce.vercel.app/og.png"><link rel="icon" type="image/png" href="/icon-myelin-192.png"><link rel="apple-touch-icon" href="/icon-myelin-180.png"></head><body><header><div class="wrap"><strong>Myelin Learning Lab</strong><a href="/">Dashboard</a><a href="/briefs">Briefs</a><a href="/tools">Tools</a><a href="/status">Status</a></div></header><main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Three applied courses · non-credit</div>
+      <h1>Practise the decision, not the vocabulary.</h1>
+      <p class="lead">Evidence, privacy and governance — six lessons and eight decisions each, with a written scenario in every lesson and a record you can export.</p>
+      <div class="notice"><strong>Non-credit boundary:</strong> These courses award 0.0 CE credits. They do not verify identity, confer an accredited certificate, or satisfy a licensing requirement.</div>
+      <nav class="picker" aria-label="Jump to a course">
+      <a class="pill" data-id="evidence" href="#c-evidence">EV-10 · Claims</a>
+      <a class="pill" data-id="privacy" href="#c-privacy">PR-12 · Data Before Prompts</a>
+      <a class="pill" data-id="governance" href="#c-governance">GV-15 · Human Oversight That Works</a>
+      </nav>
+    </section>
+    <section class="read-guide" aria-labelledby="howto">
+      <h2 id="howto">How the lab works</h2>
+      <p>Three courses, six lessons each, and an eight-question decision check at the end of every one. All three are on this page in full — nothing is unlocked, and you can read every lesson and every question without answering anything. The picker above simply jumps you to one.</p>
+      <p><strong>Each lesson ends in a scenario, and the order matters.</strong> Write your own answer in the box before you open the model response. Reading a good answer first feels like learning and is not: recognition is much easier than recall, and the gap between them is precisely what shows up when you have to make the call yourself, unprompted, on a Tuesday afternoon. Your writing stays in this browser and is never sent anywhere.</p>
+      <p><strong>Which one to take first.</strong> If you publish, file, or send anything a model helped produce, take <strong>EV-10</strong> — it is about the distance between a claim and the evidence for it. If you are the person deciding what may be pasted into a tool, take <strong>PR-12</strong>. If you are accountable for a system other people use, take <strong>GV-15</strong>. If you are unsure, EV-10 is the one whose habits the other two assume.</p>
+      <p><strong>What commonly goes wrong:</strong> completing the reading and skipping the scenarios. The lessons describe a procedure; the scenarios are where you find out whether you can actually run it when the facts are ambiguous and the deadline is real. A course finished without the scenarios has taught you the vocabulary and not the judgement.</p>
+      <p><strong>The boundary, stated plainly:</strong> every course here awards <strong>0.0 CE credits</strong>. Myelin is not an accredited or approved continuing-education provider, no identity is verified, and nothing is reported to any licensing board. See <a href="/status">credential status</a> for the full statement.</p>
+    </section>
+    <section class="course" id="c-evidence" data-course="evidence" data-code="EV-10" data-key="myelin-ev-10-v2" data-prefix="ev" aria-labelledby="h-evidence">
+      <div class="course-head">
+        <div class="eyebrow">EV-10 · 6 lessons · approximately 55 minutes</div>
+        <h2 id="h-evidence">Claims, Sources & Citations</h2>
+        <p class="summary">Build a reproducible path from a generated claim to evidence a qualified reviewer can actually defend.</p>
+        <p class="progressText" role="status" aria-live="polite">0 of 6 lessons complete</p>
+        <div class="meter" aria-hidden="true"><i class="bar"></i></div>
+      </div>
+      <div class="lessons">
+        <article class="lesson" id="ev-l0">
+          <div class="eyebrow">Lesson 1 of 6</div>
+          <h3>Find the claims hiding in prose</h3>
+          <p class="objective"><strong>Objective:</strong> Convert polished language into discrete propositions before evaluating it.</p>
+          <p>A sentence can hide several claims. “AI improves access to mental-health care” may assert increased availability, actual use, equitable reach, clinical benefit, and a causal relationship. Each needs different evidence.</p><p><strong>Method:</strong> circle the actor, action, population, comparison, outcome, place, and time. Label the result fact, inference, opinion, recommendation, or forecast. Rank it high, medium, or low consequence if wrong.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A briefing says “automated intake reduces clinician burden and improves outcomes.”</strong></summary>
+            <label for="ev-note0">Write your decision before revealing the model response.</label>
+            <textarea id="ev-note0" data-note="0" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Separate at least four claims: the intake is automated; clinician time or workload changed; patient outcomes changed; and automation caused the change. Do not evaluate the bundle as one claim.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="0"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="ev-l1">
+          <div class="eyebrow">Lesson 2 of 6</div>
+          <h3>Match evidence to the proposition</h3>
+          <p class="objective"><strong>Objective:</strong> Determine which source type can establish the exact proposition.</p>
+          <p>Authority depends on the question. Enacted text establishes what a statute says. A regulator explains its administration but may not resolve a court’s interpretation. A randomized study may estimate an intervention effect in its sample but not prove universal effectiveness.</p><p>Build an evidence hierarchy for the claim—not for the topic. Prefer original decisions, rules, standards, datasets, and reported results; use commentary to discover and contextualize them.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A vendor blog links to a peer-reviewed study and says its product is “clinically validated.”</strong></summary>
+            <label for="ev-note1">Write your decision before revealing the model response.</label>
+            <textarea id="ev-note1" data-note="1" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Open the study. Confirm the tested product/version, sponsor, population, comparator, endpoint, follow-up, attrition, effect size, uncertainty, and whether “clinical validation” is language the study supports.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="1"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="ev-l2">
+          <div class="eyebrow">Lesson 3 of 6</div>
+          <h3>Read beyond the abstract</h3>
+          <p class="objective"><strong>Objective:</strong> Test design, denominator, comparator, and limitations before repeating a result.</p>
+          <p>Ask who was included and excluded, how exposure and outcomes were defined, what the comparison actually was, whether missing data could change the result, and whether the analysis was prespecified. Relative change without the baseline can exaggerate practical importance.</p><p>Write both the supported claim and the strongest material limitation. If you cannot explain the denominator and comparator, you are not ready to publish the number.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A study reports a 50% reduction, from 2 events per 10,000 to 1 per 10,000.</strong></summary>
+            <label for="ev-note2">Write your decision before revealing the model response.</label>
+            <textarea id="ev-note2" data-note="2" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Report the absolute and relative change, timeframe, population, and uncertainty. “50% reduction” alone conceals the small baseline risk.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="2"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="ev-l3">
+          <div class="eyebrow">Lesson 4 of 6</div>
+          <h3>Verify legal and policy claims</h3>
+          <p class="objective"><strong>Objective:</strong> Check jurisdiction, authority, procedural status, effective date, and later history.</p>
+          <p>Distinguish a bill from enacted law, guidance from a binding rule, a trial ruling from controlling appellate authority, and publication from effectiveness. Track amendments, stays, appeals, repeals, corrections, and agency updates.</p><p>A reliable ledger records jurisdiction, issuing body, document type, identifier, date, effective status, pinpoint, and later treatment.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A generated memo says “the state banned automated hiring decisions in 2025.”</strong></summary>
+            <label for="ev-note3">Write your decision before revealing the model response.</label>
+            <textarea id="ev-note3" data-note="3" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Identify the state, instrument, covered decisions and entities, exceptions, effective date, implementing rules, enforcement, and current status. The sentence may be overbroad even if a relevant law exists.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="3"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="ev-l4">
+          <div class="eyebrow">Lesson 5 of 6</div>
+          <h3>Use citations as evidence infrastructure</h3>
+          <p class="objective"><strong>Objective:</strong> Create proposition-level citations another reviewer can reproduce.</p>
+          <p>Place a citation where its support is visible. Record title, issuer/author, stable identifier or URL, pinpoint, version, access date, and the proposition it supports. Archive permitted copies or metadata when link rot matters.</p><p>One citation at the end of a paragraph rarely supports every sentence. Never retain a plausible citation you have not opened.</p>
+          <details class="apply">
+            <summary><strong>Apply it: Three claims in one paragraph share one footnote to a 60-page report.</strong></summary>
+            <label for="ev-note4">Write your decision before revealing the model response.</label>
+            <textarea id="ev-note4" data-note="4" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Create a claim-to-source table. Give each material proposition its own pinpoint or mark it unsupported. Narrow or remove anything the report does not establish.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="4"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="ev-l5">
+          <div class="eyebrow">Lesson 6 of 6</div>
+          <h3>Write the verification record</h3>
+          <p class="objective"><strong>Objective:</strong> Document the human judgment that turns research into defensible work product.</p>
+          <p>For each material claim record: exact wording, claim type, consequence of error, source, pinpoint, support summary, limitations, currency check, reviewer, date, and disposition—retain, narrow, qualify, remove, or escalate.</p><p>Close with unresolved uncertainty and the condition that would change the conclusion. Verification is complete when another qualified person can reproduce the path, not when the prose sounds convincing.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A deadline arrives with two claims still unverified.</strong></summary>
+            <label for="ev-note5">Write your decision before revealing the model response.</label>
+            <textarea id="ev-note5" data-note="5" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Do not silently publish. Remove them, label uncertainty with its decision impact, or escalate for an explicit risk decision. Record what remains open and who accepted it.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="5"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+      </div>
+      <section class="quiz" aria-labelledby="q-evidence">
+        <div class="eyebrow">Applied mastery check</div>
+        <h3 id="q-evidence">Eight decisions — not trivia</h3>
+        <p>Complete all six scenarios and answer at least 7 of 8 questions correctly. Each response receives explanatory feedback.</p>
+        <form id="ev-quiz">
+          <fieldset>
+            <legend>1. A statement contains actor, outcome, and causation. What comes first?</legend>
+            <label class="answer"><input required type="radio" name="ev-q0" value="0"> <span>Find one citation for the paragraph</span></label>
+            <label class="answer"><input required type="radio" name="ev-q0" value="1"> <span>Split it into separately testable propositions</span></label>
+            <label class="answer"><input required type="radio" name="ev-q0" value="2"> <span>Ask the model to sound less certain</span></label>
+            <p class="feedback" id="ev-fb0" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>2. A vendor says its tool is clinically validated. Best first move?</legend>
+            <label class="answer"><input required type="radio" name="ev-q1" value="0"> <span>Repeat the peer-reviewed label</span></label>
+            <label class="answer"><input required type="radio" name="ev-q1" value="1"> <span>Open the study and test product, population, comparator, endpoint, and limits</span></label>
+            <label class="answer"><input required type="radio" name="ev-q1" value="2"> <span>Check the vendor’s follower count</span></label>
+            <p class="feedback" id="ev-fb1" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>3. A 50% reduction from 2/10,000 to 1/10,000 should be reported as:</legend>
+            <label class="answer"><input required type="radio" name="ev-q2" value="0"> <span>Only 50%</span></label>
+            <label class="answer"><input required type="radio" name="ev-q2" value="1"> <span>Absolute and relative change with context</span></label>
+            <label class="answer"><input required type="radio" name="ev-q2" value="2"> <span>A clinically important result</span></label>
+            <p class="feedback" id="ev-fb2" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>4. A bill introduced last month is:</legend>
+            <label class="answer"><input required type="radio" name="ev-q3" value="0"> <span>Enacted law</span></label>
+            <label class="answer"><input required type="radio" name="ev-q3" value="1"> <span>Evidence of a proposal, not enactment</span></label>
+            <label class="answer"><input required type="radio" name="ev-q3" value="2"> <span>Binding guidance</span></label>
+            <p class="feedback" id="ev-fb3" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>5. One footnote after three factual sentences:</legend>
+            <label class="answer"><input required type="radio" name="ev-q4" value="0"> <span>Automatically supports all three</span></label>
+            <label class="answer"><input required type="radio" name="ev-q4" value="1"> <span>Requires proposition-level fit and pinpoints</span></label>
+            <label class="answer"><input required type="radio" name="ev-q4" value="2"> <span>Is always improper</span></label>
+            <p class="feedback" id="ev-fb4" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>6. If a source cannot be opened:</legend>
+            <label class="answer"><input required type="radio" name="ev-q5" value="0"> <span>Keep it if plausible</span></label>
+            <label class="answer"><input required type="radio" name="ev-q5" value="1"> <span>Treat the proposition as unverified</span></label>
+            <label class="answer"><input required type="radio" name="ev-q5" value="2"> <span>Cite a search snippet</span></label>
+            <p class="feedback" id="ev-fb5" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>7. A limitation that changes applicability should be:</legend>
+            <label class="answer"><input required type="radio" name="ev-q6" value="0"> <span>Omitted for readability</span></label>
+            <label class="answer"><input required type="radio" name="ev-q6" value="1"> <span>Recorded and reflected in the claim</span></label>
+            <label class="answer"><input required type="radio" name="ev-q6" value="2"> <span>Moved to private notes only</span></label>
+            <p class="feedback" id="ev-fb6" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>8. Verification is complete when:</legend>
+            <label class="answer"><input required type="radio" name="ev-q7" value="0"> <span>The prose sounds professional</span></label>
+            <label class="answer"><input required type="radio" name="ev-q7" value="1"> <span>A qualified reviewer can reproduce the claim-to-evidence path</span></label>
+            <label class="answer"><input required type="radio" name="ev-q7" value="2"> <span>The model gives confidence above 90%</span></label>
+            <p class="feedback" id="ev-fb7" aria-live="polite"></p>
+          </fieldset>
+        </form>
+        <button class="btn" hidden data-jsonly form="ev-quiz">Score attempt</button>
+        <p class="result" role="status" aria-live="polite"></p>
+      </section>
+      <section class="record" aria-labelledby="r-evidence">
+        <div class="eyebrow">Browser-generated learning record</div>
+        <h3 id="r-evidence" class="recordTitle">EV-10 completed</h3>
+        <div class="data">
+          <div>Completed<strong class="completed"></strong></div>
+          <div>Mastery<strong class="score"></strong></div>
+          <div>Credit<strong>0.0 CE</strong></div>
+          <div>Record ID<strong class="recordId"></strong></div>
+        </div>
+        <p><strong>Not a certificate.</strong> Identity was not verified and no accreditor or licensing board approved this activity.</p>
+        <div class="actions">
+          <button class="btn printBtn" type="button">Print / save</button>
+          <button class="pill exportBtn" type="button">Export record + exercises</button>
+          <button class="pill deleteBtn" type="button">Delete this course's local data</button>
+        </div>
+      </section>
+    </section>
+    <section class="course" id="c-privacy" data-course="privacy" data-code="PR-12" data-key="myelin-pr-12-v2" data-prefix="pr" aria-labelledby="h-privacy">
+      <div class="course-head">
+        <div class="eyebrow">PR-12 · 6 lessons · approximately 55 minutes</div>
+        <h2 id="h-privacy">Data Before Prompts</h2>
+        <p class="summary">Decide what may enter an AI system before convenience turns into an unauthorized disclosure.</p>
+        <p class="progressText" role="status" aria-live="polite">0 of 6 lessons complete</p>
+        <div class="meter" aria-hidden="true"><i class="bar"></i></div>
+      </div>
+      <div class="lessons">
+        <article class="lesson" id="pr-l0">
+          <div class="eyebrow">Lesson 1 of 6</div>
+          <h3>Map the data and the duty</h3>
+          <p class="objective"><strong>Objective:</strong> Identify the data, people, source, authority, and duties before choosing a tool.</p>
+          <p>Inventory direct identifiers, quasi-identifiers, communications, records, metadata, and inferred attributes. Ask who provided the information, for what purpose, under which notice, consent, policy, contract, privilege, or professional duty.</p><p>“Publicly available” is not a universal permission. Accuracy, context, terms, expectations, intellectual property, anti-discrimination rules, and reuse restrictions may still matter.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A team wants to paste public employee biographies and internal performance notes into a ranking tool.</strong></summary>
+            <label for="pr-note0">Write your decision before revealing the model response.</label>
+            <textarea id="pr-note0" data-note="0" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Treat the combined dataset as employment information. Identify decision purpose, authority, notice, discrimination risk, vendor handling, and whether the ranking is permitted—not merely whether biographies are public.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="0"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="pr-l1">
+          <div class="eyebrow">Lesson 2 of 6</div>
+          <h3>Minimize and transform</h3>
+          <p class="objective"><strong>Objective:</strong> Use the least information needed and choose the safest workable representation.</p>
+          <p>Remove fields unrelated to the task. Prefer synthetic records for design, aggregate data for trends, local processing where feasible, and tokenization or redaction when identifiers are unnecessary. Test whether combinations can re-identify someone.</p><p>Minimization reduces exposure; it does not create authority, eliminate bias, or make a prohibited use lawful.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A contract summary needs payment dates but not party identities.</strong></summary>
+            <label for="pr-note1">Write your decision before revealing the model response.</label>
+            <textarea id="pr-note1" data-note="1" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Use a verified local/redacted workflow containing only relevant clauses and dates. Preserve a secure mapping outside the AI tool only if the task truly requires it.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="1"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="pr-l2">
+          <div class="eyebrow">Lesson 3 of 6</div>
+          <h3>Interrogate the actual product</h3>
+          <p class="objective"><strong>Objective:</strong> Verify plan-specific retention, training, access, transfer, deletion, and security controls.</p>
+          <p>Consumer, team, enterprise, API, and embedded versions can have different terms. Record the exact service, plan, settings, contract version, subprocessors, storage regions, logging, training/reuse, administrative access, deletion mechanics, incident notice, and exit process.</p><p>A privacy toggle, marketing page, or model answer is not a complete technical and contractual assessment.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A colleague says, “It is enterprise, so our data is private.”</strong></summary>
+            <label for="pr-note2">Write your decision before revealing the model response.</label>
+            <textarea id="pr-note2" data-note="2" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Confirm the signed agreement, enabled settings, administrator configuration, subprocessors, retention, support access, training terms, and whether the proposed data category is approved.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="2"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="pr-l3">
+          <div class="eyebrow">Lesson 4 of 6</div>
+          <h3>Separate privacy from confidentiality and security</h3>
+          <p class="objective"><strong>Objective:</strong> Apply the right control to the right risk.</p>
+          <p>Privacy concerns appropriate processing of information about people. Confidentiality limits disclosure. Security protects systems and data. Privilege, trade-secret protection, records law, research rules, and professional ethics create additional layers.</p><p>Encryption can protect transit and storage while the use itself remains unauthorized. De-identification can reduce identifiability while the output still creates discriminatory effects.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A tool encrypts all uploads but retains them indefinitely for product improvement.</strong></summary>
+            <label for="pr-note3">Write your decision before revealing the model response.</label>
+            <textarea id="pr-note3" data-note="3" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Encryption does not answer purpose, reuse, retention, authority, or deletion. Evaluate each dimension separately.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="3"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="pr-l4">
+          <div class="eyebrow">Lesson 5 of 6</div>
+          <h3>Use a proceed–escalate–stop gate</h3>
+          <p class="objective"><strong>Objective:</strong> Translate uncertainty into an operational decision.</p>
+          <p><strong>Proceed</strong> only when purpose is authorized, data is minimized, the tool is approved, controls are known, and human responsibility is assigned. <strong>Escalate</strong> sensitive categories, new vendors, new purposes, cross-border transfers, vulnerable populations, or uncertain authority. <strong>Stop</strong> prohibited data, missing authority, or unacceptable access, reuse, retention, or inability to mitigate.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A deadline is near and the vendor has not answered whether prompts are used for training.</strong></summary>
+            <label for="pr-note4">Write your decision before revealing the model response.</label>
+            <textarea id="pr-note4" data-note="4" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Do not infer the answer. Use an approved alternative with synthetic or non-sensitive data, or stop and escalate. Urgency does not resolve authority.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="4"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="pr-l5">
+          <div class="eyebrow">Lesson 6 of 6</div>
+          <h3>Document and revisit the decision</h3>
+          <p class="objective"><strong>Objective:</strong> Create a data-use record that survives staff, vendor, and system changes.</p>
+          <p>Record purpose, owner, data categories, source and authority, minimization, tool/version/plan, contractual and technical controls, risk decision, approver, date, retention, deletion, and reassessment triggers.</p><p>Reassess when the use, population, data, model, vendor, integration, law, or policy changes. A prior approval is not a blanket license for function creep.</p>
+          <details class="apply">
+            <summary><strong>Apply it: An approved summarization tool adds memory and new third-party connectors.</strong></summary>
+            <label for="pr-note5">Write your decision before revealing the model response.</label>
+            <textarea id="pr-note5" data-note="5" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Pause affected workflows until data flows, defaults, permissions, retention, and contract implications are reassessed and documented.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="5"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+      </div>
+      <section class="quiz" aria-labelledby="q-privacy">
+        <div class="eyebrow">Applied mastery check</div>
+        <h3 id="q-privacy">Eight decisions — not trivia</h3>
+        <p>Complete all six scenarios and answer at least 7 of 8 questions correctly. Each response receives explanatory feedback.</p>
+        <form id="pr-quiz">
+          <fieldset>
+            <legend>1. The first pre-prompt question is:</legend>
+            <label class="answer"><input required type="radio" name="pr-q0" value="0"> <span>Which model is fastest?</span></label>
+            <label class="answer"><input required type="radio" name="pr-q0" value="1"> <span>What data, authority, people, purpose, and duties are involved?</span></label>
+            <label class="answer"><input required type="radio" name="pr-q0" value="2"> <span>Can identifiers be shortened?</span></label>
+            <p class="feedback" id="pr-fb0" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>2. Data minimization:</legend>
+            <label class="answer"><input required type="radio" name="pr-q1" value="0"> <span>Creates legal authority</span></label>
+            <label class="answer"><input required type="radio" name="pr-q1" value="1"> <span>Reduces unnecessary exposure but does not cure unauthorized use</span></label>
+            <label class="answer"><input required type="radio" name="pr-q1" value="2"> <span>Makes all data anonymous</span></label>
+            <p class="feedback" id="pr-fb1" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>3. “Enterprise” alone proves:</legend>
+            <label class="answer"><input required type="radio" name="pr-q2" value="0"> <span>All proposed data is approved</span></label>
+            <label class="answer"><input required type="radio" name="pr-q2" value="1"> <span>Nothing without plan, configuration, and contract verification</span></label>
+            <label class="answer"><input required type="radio" name="pr-q2" value="2"> <span>No administrator can access data</span></label>
+            <p class="feedback" id="pr-fb2" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>4. Encryption resolves:</legend>
+            <label class="answer"><input required type="radio" name="pr-q3" value="0"> <span>Security only, not every privacy or use question</span></label>
+            <label class="answer"><input required type="radio" name="pr-q3" value="1"> <span>All compliance questions</span></label>
+            <label class="answer"><input required type="radio" name="pr-q3" value="2"> <span>Authority to reuse data</span></label>
+            <p class="feedback" id="pr-fb3" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>5. Unanswered training terms plus sensitive data should trigger:</legend>
+            <label class="answer"><input required type="radio" name="pr-q4" value="0"> <span>Proceed</span></label>
+            <label class="answer"><input required type="radio" name="pr-q4" value="1"> <span>Escalate or stop</span></label>
+            <label class="answer"><input required type="radio" name="pr-q4" value="2"> <span>A longer prompt</span></label>
+            <p class="feedback" id="pr-fb4" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>6. Public information:</legend>
+            <label class="answer"><input required type="radio" name="pr-q5" value="0"> <span>May still carry context, accuracy, reuse, or rights constraints</span></label>
+            <label class="answer"><input required type="radio" name="pr-q5" value="1"> <span>Is always unrestricted</span></label>
+            <label class="answer"><input required type="radio" name="pr-q5" value="2"> <span>Can never be used</span></label>
+            <p class="feedback" id="pr-fb5" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>7. An approved tool adds memory and connectors. You should:</legend>
+            <label class="answer"><input required type="radio" name="pr-q6" value="0"> <span>Assume approval carries over</span></label>
+            <label class="answer"><input required type="radio" name="pr-q6" value="1"> <span>Reassess changed data flows and controls</span></label>
+            <label class="answer"><input required type="radio" name="pr-q6" value="2"> <span>Ignore features you do not click</span></label>
+            <p class="feedback" id="pr-fb6" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>8. A good data-use record includes:</legend>
+            <label class="answer"><input required type="radio" name="pr-q7" value="0"> <span>Only vendor name</span></label>
+            <label class="answer"><input required type="radio" name="pr-q7" value="1"> <span>Purpose, authority, data, controls, decision, owner, and triggers</span></label>
+            <label class="answer"><input required type="radio" name="pr-q7" value="2"> <span>Only a deletion date</span></label>
+            <p class="feedback" id="pr-fb7" aria-live="polite"></p>
+          </fieldset>
+        </form>
+        <button class="btn" hidden data-jsonly form="pr-quiz">Score attempt</button>
+        <p class="result" role="status" aria-live="polite"></p>
+      </section>
+      <section class="record" aria-labelledby="r-privacy">
+        <div class="eyebrow">Browser-generated learning record</div>
+        <h3 id="r-privacy" class="recordTitle">PR-12 completed</h3>
+        <div class="data">
+          <div>Completed<strong class="completed"></strong></div>
+          <div>Mastery<strong class="score"></strong></div>
+          <div>Credit<strong>0.0 CE</strong></div>
+          <div>Record ID<strong class="recordId"></strong></div>
+        </div>
+        <p><strong>Not a certificate.</strong> Identity was not verified and no accreditor or licensing board approved this activity.</p>
+        <div class="actions">
+          <button class="btn printBtn" type="button">Print / save</button>
+          <button class="pill exportBtn" type="button">Export record + exercises</button>
+          <button class="pill deleteBtn" type="button">Delete this course's local data</button>
+        </div>
+      </section>
+    </section>
+    <section class="course" id="c-governance" data-course="governance" data-code="GV-15" data-key="myelin-gv-15-v2" data-prefix="gv" aria-labelledby="h-governance">
+      <div class="course-head">
+        <div class="eyebrow">GV-15 · 6 lessons · approximately 60 minutes</div>
+        <h2 id="h-governance">Human Oversight That Works</h2>
+        <p class="summary">Turn “human in the loop” into decision rights, evidence thresholds, appeals, and operational accountability.</p>
+        <p class="progressText" role="status" aria-live="polite">0 of 6 lessons complete</p>
+        <div class="meter" aria-hidden="true"><i class="bar"></i></div>
+      </div>
+      <div class="lessons">
+        <article class="lesson" id="gv-l0">
+          <div class="eyebrow">Lesson 1 of 6</div>
+          <h3>Map the real decision</h3>
+          <p class="objective"><strong>Objective:</strong> Identify where AI changes a person’s rights, access, resources, safety, or opportunity.</p>
+          <p>Trace inputs, model contribution, human action, downstream system, affected people, consequence, reversibility, and feedback loops. Distinguish brainstorming from ranking, recommendation from approval, and decision support from effective decision-making.</p><p>Risk lives in the sociotechnical system: incentives, staffing, policy, data, interfaces, and organizational use—not only the model.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A model “only recommends” which benefit applications receive manual review first.</strong></summary>
+            <label for="gv-note0">Write your decision before revealing the model response.</label>
+            <textarea id="gv-note0" data-note="0" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">The recommendation allocates scarce review attention and can delay access. Map it as a consequential triage decision, including false negatives and appeal routes.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="0"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="gv-l1">
+          <div class="eyebrow">Lesson 2 of 6</div>
+          <h3>Assign decision rights</h3>
+          <p class="objective"><strong>Objective:</strong> Name who may use, review, override, escalate, pause, and approve.</p>
+          <p>Define accountable owner, qualified operator, independent reviewer where needed, incident lead, affected-person contact, and final approver. Give reviewers time, evidence, training, authority to disagree, and protection from automation pressure.</p><p>“A human reviews every output” is empty when that person lacks context, capacity, or power to change the result.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A reviewer handles 600 flags per hour and may only click approve or reject.</strong></summary>
+            <label for="gv-note1">Write your decision before revealing the model response.</label>
+            <textarea id="gv-note1" data-note="1" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">The workflow creates automation bias and inadequate review capacity. Reduce volume, improve evidence access, permit escalation, measure overrides, and redesign the decision.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="1"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="gv-l2">
+          <div class="eyebrow">Lesson 3 of 6</div>
+          <h3>Set evidence and release thresholds</h3>
+          <p class="objective"><strong>Objective:</strong> Match validation and approval to consequence, uncertainty, and detectability.</p>
+          <p>Define prohibited uses, acceptable error boundaries, subgroup testing, security and privacy checks, source verification, stress cases, accessibility, fallback, rollback, and sign-off. Test the actual workflow, population, and version—not just a vendor benchmark.</p><p>High-impact uses require stronger independent evidence and safer defaults than reversible administrative assistance.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A hiring model performs well overall but poorly for a small subgroup.</strong></summary>
+            <label for="gv-note2">Write your decision before revealing the model response.</label>
+            <textarea id="gv-note2" data-note="2" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Do not average away the harm. Investigate data and workflow, evaluate lawful and fair use, test mitigations, and withhold or restrict release until the subgroup risk is acceptably addressed.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="2"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="gv-l3">
+          <div class="eyebrow">Lesson 4 of 6</div>
+          <h3>Design explanation, contest, and remedy</h3>
+          <p class="objective"><strong>Objective:</strong> Give affected people meaningful routes to understand and challenge consequential outcomes.</p>
+          <p>Provide usable notice of AI involvement, decision basis appropriate to context, a human contact, accessible contest process, timelines, evidence preservation, correction, and remedy. Monitor whether people can actually use the route.</p><p>An appeal that returns to the same automated logic without independent review is not meaningful contestability.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A denied applicant may email support but receives only “the system was applied correctly.”</strong></summary>
+            <label for="gv-note3">Write your decision before revealing the model response.</label>
+            <textarea id="gv-note3" data-note="3" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Provide the relevant basis, allow correction of erroneous inputs, assign qualified human reconsideration, track outcomes, and remedy improper delay or denial.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="3"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="gv-l4">
+          <div class="eyebrow">Lesson 5 of 6</div>
+          <h3>Monitor operation and change</h3>
+          <p class="objective"><strong>Objective:</strong> Detect drift, misuse, workarounds, unequal effects, and changed conditions.</p>
+          <p>Monitor performance, subgroup outcomes, overrides, complaints, appeals, near misses, incidents, latency, data shifts, and unauthorized uses. Define owners, frequency, thresholds, and automatic pause conditions.</p><p>Reassess after model, prompt, vendor, data, population, policy, integration, staffing, or purpose changes.</p>
+          <details class="apply">
+            <summary><strong>Apply it: Accuracy stays stable while human overrides fall to nearly zero.</strong></summary>
+            <label for="gv-note4">Write your decision before revealing the model response.</label>
+            <textarea id="gv-note4" data-note="4" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Investigate automation bias, interface design, incentives, reviewer time, and whether disagreement is discouraged. Stable accuracy does not prove effective oversight.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="4"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+        <article class="lesson" id="gv-l5">
+          <div class="eyebrow">Lesson 6 of 6</div>
+          <h3>Respond and learn</h3>
+          <p class="objective"><strong>Objective:</strong> Convert incidents into containment, accountability, repair, and verified improvement.</p>
+          <p>Protect people, contain the issue, preserve evidence, notify required functions, determine impact, analyze root and contributing causes, assign corrective actions, communicate appropriately, and verify the fix.</p><p>Include near misses and complaints. Close an incident only after the control is tested—not when a policy sentence is added.</p>
+          <details class="apply">
+            <summary><strong>Apply it: A model exposes confidential text in generated summaries.</strong></summary>
+            <label for="gv-note5">Write your decision before revealing the model response.</label>
+            <textarea id="gv-note5" data-note="5" rows="4" placeholder="Your reasoning stays in this browser."></textarea>
+            <details class="reveal-box">
+              <summary>Reveal a defensible response</summary>
+              <p class="source">Stop the affected workflow, preserve evidence, assess scope and notification duties, contain access, investigate data pathways, support affected people, fix controls, and verify against recurrence before restart.</p>
+            </details>
+          </details>
+          <p class="source"><strong>Framework:</strong> <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener">NIST GenAI Profile</a></p>
+          <label class="attest" hidden data-jsonly><input type="checkbox" data-i="5"> <span>I completed the lesson and scenario.</span></label>
+        </article>
+      </div>
+      <section class="quiz" aria-labelledby="q-governance">
+        <div class="eyebrow">Applied mastery check</div>
+        <h3 id="q-governance">Eight decisions — not trivia</h3>
+        <p>Complete all six scenarios and answer at least 7 of 8 questions correctly. Each response receives explanatory feedback.</p>
+        <form id="gv-quiz">
+          <fieldset>
+            <legend>1. A recommendation that controls review priority is:</legend>
+            <label class="answer"><input required type="radio" name="gv-q0" value="0"> <span>Merely administrative</span></label>
+            <label class="answer"><input required type="radio" name="gv-q0" value="1"> <span>A consequential allocation decision</span></label>
+            <label class="answer"><input required type="radio" name="gv-q0" value="2"> <span>Outside governance</span></label>
+            <p class="feedback" id="gv-fb0" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>2. A reviewer processing 600 flags/hour demonstrates:</legend>
+            <label class="answer"><input required type="radio" name="gv-q1" value="0"> <span>Strong oversight</span></label>
+            <label class="answer"><input required type="radio" name="gv-q1" value="1"> <span>Possible capacity and automation-bias failure</span></label>
+            <label class="answer"><input required type="radio" name="gv-q1" value="2"> <span>Independent review</span></label>
+            <p class="feedback" id="gv-fb1" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>3. Overall accuracy hides subgroup failure. Best response?</legend>
+            <label class="answer"><input required type="radio" name="gv-q2" value="0"> <span>Rely on the average</span></label>
+            <label class="answer"><input required type="radio" name="gv-q2" value="1"> <span>Investigate and restrict release until risk is addressed</span></label>
+            <label class="answer"><input required type="radio" name="gv-q2" value="2"> <span>Remove subgroup reporting</span></label>
+            <p class="feedback" id="gv-fb2" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>4. Meaningful contestability includes:</legend>
+            <label class="answer"><input required type="radio" name="gv-q3" value="0"> <span>A generic support inbox only</span></label>
+            <label class="answer"><input required type="radio" name="gv-q3" value="1"> <span>Notice, relevant basis, correction, independent human review, and remedy</span></label>
+            <label class="answer"><input required type="radio" name="gv-q3" value="2"> <span>The same model rerunning the case</span></label>
+            <p class="feedback" id="gv-fb3" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>5. Overrides fall to zero. This may indicate:</legend>
+            <label class="answer"><input required type="radio" name="gv-q4" value="0"> <span>Perfect automation</span></label>
+            <label class="answer"><input required type="radio" name="gv-q4" value="1"> <span>Automation bias or constrained reviewers</span></label>
+            <label class="answer"><input required type="radio" name="gv-q4" value="2"> <span>No monitoring need</span></label>
+            <p class="feedback" id="gv-fb4" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>6. A vendor benchmark proves readiness for your workflow:</legend>
+            <label class="answer"><input required type="radio" name="gv-q5" value="0"> <span>Yes</span></label>
+            <label class="answer"><input required type="radio" name="gv-q5" value="1"> <span>No—contextual validation is still required</span></label>
+            <p class="feedback" id="gv-fb5" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>7. An incident closes when:</legend>
+            <label class="answer"><input required type="radio" name="gv-q6" value="0"> <span>A policy is updated</span></label>
+            <label class="answer"><input required type="radio" name="gv-q6" value="1"> <span>Corrective controls are implemented and verified</span></label>
+            <label class="answer"><input required type="radio" name="gv-q6" value="2"> <span>Public attention ends</span></label>
+            <p class="feedback" id="gv-fb6" aria-live="polite"></p>
+          </fieldset>
+          <fieldset>
+            <legend>8. Governance applies to:</legend>
+            <label class="answer"><input required type="radio" name="gv-q7" value="0"> <span>The model only</span></label>
+            <label class="answer"><input required type="radio" name="gv-q7" value="1"> <span>The full sociotechnical decision system</span></label>
+            <label class="answer"><input required type="radio" name="gv-q7" value="2"> <span>Only high-risk vendors</span></label>
+            <p class="feedback" id="gv-fb7" aria-live="polite"></p>
+          </fieldset>
+        </form>
+        <button class="btn" hidden data-jsonly form="gv-quiz">Score attempt</button>
+        <p class="result" role="status" aria-live="polite"></p>
+      </section>
+      <section class="record" aria-labelledby="r-governance">
+        <div class="eyebrow">Browser-generated learning record</div>
+        <h3 id="r-governance" class="recordTitle">GV-15 completed</h3>
+        <div class="data">
+          <div>Completed<strong class="completed"></strong></div>
+          <div>Mastery<strong class="score"></strong></div>
+          <div>Credit<strong>0.0 CE</strong></div>
+          <div>Record ID<strong class="recordId"></strong></div>
+        </div>
+        <p><strong>Not a certificate.</strong> Identity was not verified and no accreditor or licensing board approved this activity.</p>
+        <div class="actions">
+          <button class="btn printBtn" type="button">Print / save</button>
+          <button class="pill exportBtn" type="button">Export record + exercises</button>
+          <button class="pill deleteBtn" type="button">Delete this course's local data</button>
+        </div>
+      </section>
+    </section>
+  </main><script src="/lab.js"></script></body></html>

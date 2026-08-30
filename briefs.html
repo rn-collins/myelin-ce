@@ -1,10 +1,287 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Field Brief Library · Myelin</title><meta name="description" content="Six detailed, source-linked field briefs for responsible AI decisions."><style>:root{--p:#4a2a4e;--g:#c98d2e;--g-text:#916621;--bg:#f7f2e8;--paper:#fffdf8;--line:#ddd2c1}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#281f2b;font:16px/1.65 system-ui}a{color:#6b3f6e}.wrap{max-width:1080px;margin:auto;padding:1.2rem}header{background:var(--p);color:white}header .wrap{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}header strong{margin-right:auto}header a{color:white}h1,h2,h3{font-family:Georgia,serif;line-height:1.12}.hero{padding:4rem 0 2rem}h1{font-size:clamp(3rem,8vw,6rem);margin:.15em 0}.eyebrow{text-transform:uppercase;letter-spacing:.13em;color:var(--g-text);font-size:.72rem;font-weight:800}.notice,.callout,.source,.output{padding:1rem;border-radius:9px}.notice{background:#fff4d9;border:1px solid #d9ab5d}.index{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.7rem;margin:2rem 0}.index a,.brief{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1rem}.index a{text-decoration:none;font-weight:750}.brief{margin:1rem 0;padding:clamp(1.2rem,4vw,2.2rem)}.cols{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}.callout{border-left:4px solid var(--g);background:#fbf5e8}.source,.output{background:#f2edf3}.checklist label{display:block;padding:.45rem;border-bottom:1px solid var(--line)}.print{border:1px solid var(--p);border-radius:999px;padding:.6rem 1rem;background:transparent;color:var(--p);font-weight:750;cursor:pointer}details{margin:1rem 0}summary{cursor:pointer;font-weight:800}@media(max-width:700px){.cols{grid-template-columns:1fr}}@media print{header,.hero,.index,.print{display:none}.brief{display:none;border:0}.brief.printing{display:block}}</style><link rel="canonical" href="https://myelin-ce.vercel.app/briefs"><meta property="og:type" content="website"><meta property="og:title" content="Field Brief Library"><meta property="og:description" content="Six detailed, source-linked field briefs for responsible AI decisions."><meta property="og:url" content="https://myelin-ce.vercel.app/briefs"><meta property="og:image" content="https://myelin-ce.vercel.app/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://myelin-ce.vercel.app/og.png"><link rel="icon" type="image/png" href="/icon-myelin-192.png"><link rel="apple-touch-icon" href="/icon-myelin-180.png"></head><body><header><div class="wrap"><strong>Myelin Learning Lab</strong><a href="/">Dashboard</a><a href="/tools">Tools</a><a href="/status">Status</a></div></header><main class="wrap"><section class="hero"><div class="eyebrow">Six operational briefs · version 2</div><h1>Read before the decision.</h1><p>Each brief defines its use case, required inputs, procedure, stop conditions, output, worked example, and primary framework.</p><div class="notice"><strong>Educational decision support:</strong> Confirm current law, facts, policy, contract terms, and professional duties for your context.</div></section><nav class="index" id="index"></nav><section id="briefs"></section></main><script>
-const B=[
-{id:'verification',n:'01',name:'Output verification',title:'Before generated output becomes work product',use:'A draft contains legal, scientific, financial, historical, policy, or other decision-relevant claims.',inputs:['Exact draft and intended audience','Consequence if each claim is wrong','Original sources and current status','Named qualified reviewer'],steps:['Split the draft into atomic propositions.','Classify fact, inference, opinion, recommendation, or forecast.','Open the original source; locate a pinpoint.','Test authority, method, population, comparator, date, and later history.','Rewrite to the evidence boundary; record limitations.','Assign retain, narrow, qualify, remove, or escalate.'],stops:['Source cannot be located or opened','Citation does not support the proposition','Material limitation or later history is unresolved','Controlling authority or denominator is unclear'],out:'A claim ledger containing wording, evidence, pinpoint, limitation, currency check, reviewer, date, and disposition.',example:'“Research proves AI improves care” becomes separate access, utilization, outcome, equity, and causation claims. Each is tested independently.',rule:'Narrow the sentence to the evidence; never stretch the evidence to preserve the sentence.',src:'https://www.nist.gov/itl/ai-risk-management-framework',srcname:'NIST AI Risk Management Framework'},
-{id:'privacy',n:'02',name:'Pre-prompt privacy',title:'Before information enters an AI system',use:'A proposed prompt, upload, connector, or workflow may expose information about people or confidential operations.',inputs:['Purpose and affected people','Data inventory and source','Authority, notice, consent, duty, policy, and contract','Exact product, plan, settings, retention, reuse, access, and deletion'],steps:['Classify data and applicable duties.','Remove everything not necessary for the purpose.','Prefer synthetic, aggregated, redacted, or local alternatives.','Verify actual plan-specific technical and contractual controls.','Separate privacy, confidentiality, security, privilege, and records duties.','Document proceed, escalate, or stop with owner and reassessment triggers.'],stops:['Missing authority or prohibited data','Unknown or unacceptable training/reuse','Unacceptable access, retention, transfer, or deletion','Sensitive/high-impact use without qualified approval'],out:'A pre-prompt decision record with purpose, data, authority, controls, owner, decision, and change triggers.',example:'A contract summary needs dates but not party identities: use only necessary clauses in an approved workflow and retain secure source records separately.',rule:'Deleting later does not establish that the original disclosure was authorized.',src:'https://www.nist.gov/privacy-framework',srcname:'NIST Privacy Framework'},
-{id:'procurement',n:'03',name:'Vendor procurement',title:'Before an AI vendor becomes infrastructure',use:'A team is evaluating, renewing, integrating, or materially expanding an AI product.',inputs:['Defined use and prohibited uses','Data-flow and architecture documentation','Evaluation evidence and known limitations','Terms, security materials, subprocessors, service levels, exit plan'],steps:['Define outcome, affected people, and failure consequences.','Map inputs, outputs, integrations, storage, access, and subprocessors.','Test on representative workflows and edge cases.','Evaluate privacy, security, accessibility, bias, reliability, and human controls.','Negotiate ownership, confidentiality, audit, notice, liability, termination, and portability.','Assign owner, monitoring metrics, incidents, change notice, and reassessment.'],stops:['Vendor will not answer material data questions','Evidence does not match the product/version/use','No safe exit, rollback, or incident path','Risk exceeds controls or organizational capacity'],out:'A decision packet: requirements, evidence matrix, unresolved risks, negotiated controls, accountable owner, and go/conditional/no-go decision.',example:'A polished demonstration is tested against real error modes, representative users, administrative configuration, and contract language before approval.',rule:'A demonstration is not evidence of reliable operation in your workflow.',src:'https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes',srcname:'FTC — Operation AI Comply enforcement sweep'},
-{id:'oversight',n:'04',name:'Human oversight',title:'Before “human in the loop” counts as a control',use:'AI influences triage, ranking, recommendations, approvals, access, safety, rights, or opportunities.',inputs:['Decision map and affected people','Consequence, reversibility, and error detectability','Reviewer qualifications, workload, evidence, and authority','Notice, contest, remedy, monitoring, and pause conditions'],steps:['Map the real decision and downstream action.','Name operator, reviewer, approver, escalation owner, and incident lead.','Define evidence and thresholds for release or rejection.','Give reviewers time and authority to disagree.','Design notice, correction, independent challenge, and remedy.','Monitor outcomes, subgroups, overrides, complaints, drift, misuse, and change.'],stops:['Reviewer cannot inspect evidence or override','Workload makes meaningful review impossible','Affected people cannot contest consequential errors','No monitoring, fallback, pause, or accountable owner'],out:'A control record naming people, evidence, decision rights, contest routes, metrics, thresholds, and incident actions.',example:'A benefits-review prioritization model is treated as consequential triage because it can delay access even if it does not issue the final eligibility decision.',rule:'Review without authority, evidence, or time is ceremony—not oversight.',src:'https://www.nist.gov/itl/ai-risk-management-framework',srcname:'NIST AI Risk Management Framework'},
-{id:'incident',n:'05',name:'Incident response',title:'When AI use may have caused harm or exposure',use:'A complaint, near miss, disclosure, unsafe output, discriminatory effect, rights error, outage, or unauthorized use appears.',inputs:['Prompts, outputs, logs, versions, data paths, approvals','Affected people, systems, decisions, and timeframe','Policies, contracts, notification duties, and owners','Prior incidents, monitoring signals, and changes'],steps:['Protect people and contain ongoing impact.','Preserve evidence without quietly overwriting records.','Notify designated legal, privacy, security, clinical, or operational owners as applicable.','Assess scope, severity, affected groups, and notification/remedy duties.','Identify root and contributing causes across the full system.','Implement, assign, test, and monitor corrective actions before restart.'],stops:['Ongoing harm or exposure is not contained','Evidence is being lost','Required expertise or authority is absent','A proposed restart lacks verified controls'],out:'An incident record with timeline, impact, evidence, containment, notification, cause, repair, owner, deadline, and verification.',example:'Confidential text appears in summaries: stop the workflow, preserve evidence, assess scope, contain access, support affected people, fix pathways, and verify before restart.',rule:'A near miss is governance evidence. Capture it before conditions recur.',src:'https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence',srcname:'NIST Generative AI Profile (AI 600-1)'},
-{id:'mental',n:'06',name:'Mental-health practice',title:'Before AI touches a therapeutic context',use:'AI supports administration, documentation, wellness conversation, clinical decisions, crisis response, diagnosis, or treatment.',inputs:['Intended function, user, setting, and clinical responsibility','Study population, comparator, endpoints, attrition, exclusions, follow-up','Privacy, consent, secondary use, and vendor controls','Bias, crisis limits, escalation, monitoring, and evidence'],steps:['Separate administrative, supportive, diagnostic, treatment, and crisis functions.','Match evidence to the exact product, population, outcome, and setting.','Distinguish engagement, satisfaction, access, symptom change, safety, and clinical benefit.','Evaluate exclusions, subgroup performance, attrition, and adverse events.','Define clinician responsibility, disclosure, consent, crisis escalation, and fallback.','Monitor outcomes, complaints, unsafe responses, unequal effects, and system changes.'],stops:['Marketing exceeds product-specific evidence','Crisis or complex users are excluded without a safe route','Privacy, consent, or clinical responsibility is unresolved','No qualified escalation, adverse-event, or monitoring process'],out:'A bounded use statement, evidence table, risk/control register, responsible clinician/owner, prohibited uses, and monitoring plan.',example:'An empathic chatbot is not described as therapeutic because conversational quality alone does not establish efficacy, safety, confidentiality, or clinical judgment.',rule:'Sounding empathic is not evidence of safe or effective therapy.',src:'https://www.who.int/publications/i/item/9789240029200',srcname:'WHO — Ethics and governance of AI for health'}];
-index.innerHTML=B.map(b=>`<a href="#${b.id}">${b.n} · ${b.name}</a>`).join('');briefs.innerHTML=B.map(b=>`<article class="brief" id="${b.id}"><div class="eyebrow">Brief ${b.n} · ${b.name}</div><h2>${b.title}</h2><p class="callout"><strong>Use when:</strong> ${b.use}</p><div class="cols"><div><h3>Required inputs</h3><ul>${b.inputs.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Minimum procedure</h3><ol>${b.steps.map(x=>`<li>${x}</li>`).join('')}</ol></div><div><h3>Stop conditions</h3><ul>${b.stops.map(x=>`<li>${x}</li>`).join('')}</ul><p class="output"><strong>Required output:</strong> ${b.out}</p><details><summary>Worked example</summary><p>${b.example}</p></details><p class="callout"><strong>Working rule:</strong> ${b.rule}</p></div></div><div class="checklist"><h3>Ready-to-use checklist</h3>${[...b.inputs,...b.steps].map((x,i)=>`<label><input type="checkbox"> ${x}</label>`).join('')}</div><p class="source"><strong>Primary framework:</strong> <a target="_blank" rel="noopener" href="${b.src}">${b.srcname}</a> · Last reviewed 16 August 2026</p><button class="print">Print this brief</button></article>`).join('');document.querySelectorAll('.print').forEach(x=>x.onclick=()=>{let a=x.closest('.brief');a.classList.add('printing');print();a.classList.remove('printing')});
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Field Brief Library · Myelin</title><meta name="description" content="Six detailed, source-linked field briefs for responsible AI decisions."><style>:root{--p:#4a2a4e;--g:#c98d2e;--g-text:#916621;--bg:#f7f2e8;--paper:#fffdf8;--line:#ddd2c1}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#281f2b;font:16px/1.65 system-ui}a{color:#6b3f6e}.wrap{max-width:1080px;margin:auto;padding:1.2rem}header{background:var(--p);color:white}header .wrap{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}header strong{margin-right:auto}header a{color:white}h1,h2,h3{font-family:Georgia,serif;line-height:1.12}.hero{padding:4rem 0 2rem}h1{font-size:clamp(3rem,8vw,6rem);margin:.15em 0}.eyebrow{text-transform:uppercase;letter-spacing:.13em;color:var(--g-text);font-size:.72rem;font-weight:800}.notice,.callout,.source,.output{padding:1rem;border-radius:9px}.notice{background:#fff4d9;border:1px solid #d9ab5d}.index{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.7rem;margin:2rem 0}.index a,.brief{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1rem}.index a{text-decoration:none;font-weight:750}.brief{margin:1rem 0;padding:clamp(1.2rem,4vw,2.2rem)}.cols{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}.callout{border-left:4px solid var(--g);background:#fbf5e8}.source,.output{background:#f2edf3}.checklist label{display:block;padding:.45rem;border-bottom:1px solid var(--line)}.print{border:1px solid var(--p);border-radius:999px;padding:.6rem 1rem;background:transparent;color:var(--p);font-weight:750;cursor:pointer}details{margin:1rem 0}summary{cursor:pointer;font-weight:800}@media(max-width:700px){.cols{grid-template-columns:1fr}}.brief{overflow-wrap:anywhere}@media print{header,.hero,.index,.print,.reset-row,.read-guide{display:none}.brief{border:0;break-inside:avoid}body.printing-one .brief{display:none}body.printing-one .brief.printing{display:block}}.read-guide{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--p);border-radius:12px;padding:clamp(1.2rem,4vw,2rem);margin:2rem 0}.read-guide h2{margin-top:0;font-size:clamp(1.5rem,3.4vw,2.1rem)}.read-guide p{max-width:72ch}.index a{display:flex;flex-direction:column;gap:.2rem;line-height:1.3}.ix-n{font-size:.7rem;letter-spacing:.12em;color:var(--g-text);font-weight:800}.brief h2{font-size:clamp(1.5rem,3.6vw,2.2rem);margin:.2em 0 .6em}.brief h3{font-size:1rem;margin:1.4rem 0 .4rem}.example{background:#f2edf3;border-radius:9px;padding:1rem;margin:.4rem 0}.misuse{border-left:4px solid #993b2c;background:#fbeeea;border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.4rem 0}.misuse h3{margin:0 0 .4rem;color:#7e2f22}.misuse p{margin:0;max-width:72ch}.checklist{margin-top:1.4rem;border-top:1px solid var(--line);padding-top:1rem}.ck-note{font-size:.82rem;color:#5d5061;margin:.2rem 0 .6rem}.ck-count{font-size:.82rem;font-weight:800;color:var(--g-text);margin:.2rem 0 .6rem}.ck-count.done{color:#256448}.checklist label{display:flex;gap:.6rem;align-items:flex-start;padding:.55rem .2rem;border-bottom:1px solid var(--line);cursor:pointer}.checklist input{margin-top:.25rem;width:18px;height:18px;flex:none}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--p);outline-offset:2px}header a:focus-visible{outline-color:#f7d9a0}.print{margin-top:1.2rem;min-height:44px}.reset-row{margin:2rem 0}@media(max-width:700px){.read-guide{padding:1.1rem}}</style><link rel="canonical" href="https://myelin-ce.vercel.app/briefs"><meta property="og:type" content="website"><meta property="og:title" content="Field Brief Library"><meta property="og:description" content="Six detailed, source-linked field briefs for responsible AI decisions."><meta property="og:url" content="https://myelin-ce.vercel.app/briefs"><meta property="og:image" content="https://myelin-ce.vercel.app/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://myelin-ce.vercel.app/og.png"><link rel="icon" type="image/png" href="/icon-myelin-192.png"><link rel="apple-touch-icon" href="/icon-myelin-180.png"></head><body><header><div class="wrap"><strong>Myelin Learning Lab</strong><a href="/">Dashboard</a><a href="/tools">Tools</a><a href="/status">Status</a></div></header><main class="wrap"><section class="hero"><div class="eyebrow">Six operational briefs · version 2</div><h1>Read before the decision.</h1><p>Each brief defines its use case, required inputs, procedure, stop conditions, output, worked example, and primary framework.</p><div class="notice"><strong>Educational decision support:</strong> Confirm current law, facts, policy, contract terms, and professional duties for your context.</div></section><nav class="index" id="index" aria-label="Jump to a brief">
+      <a href="#verification"><span class="ix-n">01</span>Output verification</a>
+      <a href="#privacy"><span class="ix-n">02</span>Pre-prompt privacy</a>
+      <a href="#procurement"><span class="ix-n">03</span>Vendor procurement</a>
+      <a href="#oversight"><span class="ix-n">04</span>Human oversight</a>
+      <a href="#incident"><span class="ix-n">05</span>Incident response</a>
+      <a href="#mental"><span class="ix-n">06</span>Mental-health practice</a>
+    </nav>    <section class="read-guide" aria-labelledby="howto">
+      <h2 id="howto">How to use a field brief</h2>
+      <p>A brief is not a summary of a topic. It is the minimum you have to do before a specific decision, written so that a person who is tired, rushed, and accountable can still do it. That is why every one has the same six parts: when it applies, what you need in hand, the procedure, the conditions that mean <em>stop</em>, the record you must end up with, and one working rule short enough to remember under pressure.</p>
+      <p><strong>Read the stop conditions first.</strong> They are the part people skip and the part that does the work. A procedure tells you how to proceed; a stop condition tells you when proceeding is the mistake. If any stop condition is met, the brief is finished — the answer is escalate, not continue carefully.</p>
+      <p><strong>The required output is the point, not the paperwork.</strong> Each brief ends in a record because a decision you cannot reconstruct is a decision you cannot defend. Six months later, the question will not be whether you were careful; it will be what you actually checked, when, and on what evidence. Only the record answers that.</p>
+      <p><strong>What these are not.</strong> They are educational decision support. They do not tell you what the law requires of you, what your regulator expects, or what your contract says — confirm current law, facts, policy, contract terms, and professional duties for your own context, and involve qualified people where your duties require it.</p>
+      <p><strong>If you only read one:</strong> start with Brief 01 if you publish or send anything a model helped write, and Brief 02 if you are about to paste something into a tool. Those two cover the overwhelming majority of everyday exposure.</p>
+    </section>
+    <section id="briefs">
+    <article class="brief" id="verification">
+      <div class="eyebrow">Brief 01 · Output verification</div>
+      <h2>Before generated output becomes work product</h2>
+      <p class="callout"><strong>Use when:</strong> A draft contains legal, scientific, financial, historical, policy, or other decision-relevant claims.</p>
+      <div class="cols">
+        <div>
+          <h3>Required inputs</h3>
+          <ul><li>Exact draft and intended audience</li><li>Consequence if each claim is wrong</li><li>Original sources and current status</li><li>Named qualified reviewer</li></ul>
+          <h3>Minimum procedure</h3>
+          <ol><li>Split the draft into atomic propositions.</li><li>Classify fact, inference, opinion, recommendation, or forecast.</li><li>Open the original source; locate a pinpoint.</li><li>Test authority, method, population, comparator, date, and later history.</li><li>Rewrite to the evidence boundary; record limitations.</li><li>Assign retain, narrow, qualify, remove, or escalate.</li></ol>
+        </div>
+        <div>
+          <h3>Stop conditions</h3>
+          <ul><li>Source cannot be located or opened</li><li>Citation does not support the proposition</li><li>Material limitation or later history is unresolved</li><li>Controlling authority or denominator is unclear</li></ul>
+          <p class="output"><strong>Required output:</strong> A claim ledger containing wording, evidence, pinpoint, limitation, currency check, reviewer, date, and disposition.</p>
+          <h3>Worked example</h3>
+          <p class="example">“Research proves AI improves care” becomes separate access, utilization, outcome, equity, and causation claims. Each is tested independently.</p>
+          <p class="callout"><strong>Working rule:</strong> Narrow the sentence to the evidence; never stretch the evidence to preserve the sentence.</p>
+        </div>
+      </div>
+      <div class="misuse"><h3>What commonly goes wrong with this brief</h3><p>Running the ledger over the sentences you already doubt. The claims that cause damage are the ones that read as obviously true — a round number, a familiar statute, a well-known study everyone cites. Split the whole draft, not the parts that feel shaky.</p></div>
+      <div class="checklist" data-brief="verification">
+        <h3>Ready-to-use checklist</h3>
+        <p class="ck-note">Ticks are remembered in this browser only. Nothing is sent anywhere, and clearing your browser data clears them.</p>
+        <label><input type="checkbox" data-ck="verification-0"> <span>Exact draft and intended audience</span></label>
+        <label><input type="checkbox" data-ck="verification-1"> <span>Consequence if each claim is wrong</span></label>
+        <label><input type="checkbox" data-ck="verification-2"> <span>Original sources and current status</span></label>
+        <label><input type="checkbox" data-ck="verification-3"> <span>Named qualified reviewer</span></label>
+        <label><input type="checkbox" data-ck="verification-4"> <span>Split the draft into atomic propositions.</span></label>
+        <label><input type="checkbox" data-ck="verification-5"> <span>Classify fact, inference, opinion, recommendation, or forecast.</span></label>
+        <label><input type="checkbox" data-ck="verification-6"> <span>Open the original source; locate a pinpoint.</span></label>
+        <label><input type="checkbox" data-ck="verification-7"> <span>Test authority, method, population, comparator, date, and later history.</span></label>
+        <label><input type="checkbox" data-ck="verification-8"> <span>Rewrite to the evidence boundary; record limitations.</span></label>
+        <label><input type="checkbox" data-ck="verification-9"> <span>Assign retain, narrow, qualify, remove, or escalate.</span></label>
+      </div>
+      <p class="source"><strong>Primary framework:</strong> <a target="_blank" rel="noopener" href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a> · Last reviewed 16 August 2026</p>
+    </article>
+    <article class="brief" id="privacy">
+      <div class="eyebrow">Brief 02 · Pre-prompt privacy</div>
+      <h2>Before information enters an AI system</h2>
+      <p class="callout"><strong>Use when:</strong> A proposed prompt, upload, connector, or workflow may expose information about people or confidential operations.</p>
+      <div class="cols">
+        <div>
+          <h3>Required inputs</h3>
+          <ul><li>Purpose and affected people</li><li>Data inventory and source</li><li>Authority, notice, consent, duty, policy, and contract</li><li>Exact product, plan, settings, retention, reuse, access, and deletion</li></ul>
+          <h3>Minimum procedure</h3>
+          <ol><li>Classify data and applicable duties.</li><li>Remove everything not necessary for the purpose.</li><li>Prefer synthetic, aggregated, redacted, or local alternatives.</li><li>Verify actual plan-specific technical and contractual controls.</li><li>Separate privacy, confidentiality, security, privilege, and records duties.</li><li>Document proceed, escalate, or stop with owner and reassessment triggers.</li></ol>
+        </div>
+        <div>
+          <h3>Stop conditions</h3>
+          <ul><li>Missing authority or prohibited data</li><li>Unknown or unacceptable training/reuse</li><li>Unacceptable access, retention, transfer, or deletion</li><li>Sensitive/high-impact use without qualified approval</li></ul>
+          <p class="output"><strong>Required output:</strong> A pre-prompt decision record with purpose, data, authority, controls, owner, decision, and change triggers.</p>
+          <h3>Worked example</h3>
+          <p class="example">A contract summary needs dates but not party identities: use only necessary clauses in an approved workflow and retain secure source records separately.</p>
+          <p class="callout"><strong>Working rule:</strong> Deleting later does not establish that the original disclosure was authorized.</p>
+        </div>
+      </div>
+      <div class="misuse"><h3>What commonly goes wrong with this brief</h3><p>Treating the gate as a form to complete after the decision is made. If you are filling it in to justify a prompt you have already sent, it is documentation, not a control. The gate only works upstream of disclosure, because disclosure is the step that cannot be undone.</p></div>
+      <div class="checklist" data-brief="privacy">
+        <h3>Ready-to-use checklist</h3>
+        <p class="ck-note">Ticks are remembered in this browser only. Nothing is sent anywhere, and clearing your browser data clears them.</p>
+        <label><input type="checkbox" data-ck="privacy-0"> <span>Purpose and affected people</span></label>
+        <label><input type="checkbox" data-ck="privacy-1"> <span>Data inventory and source</span></label>
+        <label><input type="checkbox" data-ck="privacy-2"> <span>Authority, notice, consent, duty, policy, and contract</span></label>
+        <label><input type="checkbox" data-ck="privacy-3"> <span>Exact product, plan, settings, retention, reuse, access, and deletion</span></label>
+        <label><input type="checkbox" data-ck="privacy-4"> <span>Classify data and applicable duties.</span></label>
+        <label><input type="checkbox" data-ck="privacy-5"> <span>Remove everything not necessary for the purpose.</span></label>
+        <label><input type="checkbox" data-ck="privacy-6"> <span>Prefer synthetic, aggregated, redacted, or local alternatives.</span></label>
+        <label><input type="checkbox" data-ck="privacy-7"> <span>Verify actual plan-specific technical and contractual controls.</span></label>
+        <label><input type="checkbox" data-ck="privacy-8"> <span>Separate privacy, confidentiality, security, privilege, and records duties.</span></label>
+        <label><input type="checkbox" data-ck="privacy-9"> <span>Document proceed, escalate, or stop with owner and reassessment triggers.</span></label>
+      </div>
+      <p class="source"><strong>Primary framework:</strong> <a target="_blank" rel="noopener" href="https://www.nist.gov/privacy-framework">NIST Privacy Framework</a> · Last reviewed 16 August 2026</p>
+    </article>
+    <article class="brief" id="procurement">
+      <div class="eyebrow">Brief 03 · Vendor procurement</div>
+      <h2>Before an AI vendor becomes infrastructure</h2>
+      <p class="callout"><strong>Use when:</strong> A team is evaluating, renewing, integrating, or materially expanding an AI product.</p>
+      <div class="cols">
+        <div>
+          <h3>Required inputs</h3>
+          <ul><li>Defined use and prohibited uses</li><li>Data-flow and architecture documentation</li><li>Evaluation evidence and known limitations</li><li>Terms, security materials, subprocessors, service levels, exit plan</li></ul>
+          <h3>Minimum procedure</h3>
+          <ol><li>Define outcome, affected people, and failure consequences.</li><li>Map inputs, outputs, integrations, storage, access, and subprocessors.</li><li>Test on representative workflows and edge cases.</li><li>Evaluate privacy, security, accessibility, bias, reliability, and human controls.</li><li>Negotiate ownership, confidentiality, audit, notice, liability, termination, and portability.</li><li>Assign owner, monitoring metrics, incidents, change notice, and reassessment.</li></ol>
+        </div>
+        <div>
+          <h3>Stop conditions</h3>
+          <ul><li>Vendor will not answer material data questions</li><li>Evidence does not match the product/version/use</li><li>No safe exit, rollback, or incident path</li><li>Risk exceeds controls or organizational capacity</li></ul>
+          <p class="output"><strong>Required output:</strong> A decision packet: requirements, evidence matrix, unresolved risks, negotiated controls, accountable owner, and go/conditional/no-go decision.</p>
+          <h3>Worked example</h3>
+          <p class="example">A polished demonstration is tested against real error modes, representative users, administrative configuration, and contract language before approval.</p>
+          <p class="callout"><strong>Working rule:</strong> A demonstration is not evidence of reliable operation in your workflow.</p>
+        </div>
+      </div>
+      <div class="misuse"><h3>What commonly goes wrong with this brief</h3><p>Evaluating the demo instead of the contract. Demonstrations are built to succeed; the terms are what governs you in eighteen months. If you only have an hour, spend it on data handling, exit and liability rather than on watching the product work.</p></div>
+      <div class="checklist" data-brief="procurement">
+        <h3>Ready-to-use checklist</h3>
+        <p class="ck-note">Ticks are remembered in this browser only. Nothing is sent anywhere, and clearing your browser data clears them.</p>
+        <label><input type="checkbox" data-ck="procurement-0"> <span>Defined use and prohibited uses</span></label>
+        <label><input type="checkbox" data-ck="procurement-1"> <span>Data-flow and architecture documentation</span></label>
+        <label><input type="checkbox" data-ck="procurement-2"> <span>Evaluation evidence and known limitations</span></label>
+        <label><input type="checkbox" data-ck="procurement-3"> <span>Terms, security materials, subprocessors, service levels, exit plan</span></label>
+        <label><input type="checkbox" data-ck="procurement-4"> <span>Define outcome, affected people, and failure consequences.</span></label>
+        <label><input type="checkbox" data-ck="procurement-5"> <span>Map inputs, outputs, integrations, storage, access, and subprocessors.</span></label>
+        <label><input type="checkbox" data-ck="procurement-6"> <span>Test on representative workflows and edge cases.</span></label>
+        <label><input type="checkbox" data-ck="procurement-7"> <span>Evaluate privacy, security, accessibility, bias, reliability, and human controls.</span></label>
+        <label><input type="checkbox" data-ck="procurement-8"> <span>Negotiate ownership, confidentiality, audit, notice, liability, termination, and portability.</span></label>
+        <label><input type="checkbox" data-ck="procurement-9"> <span>Assign owner, monitoring metrics, incidents, change notice, and reassessment.</span></label>
+      </div>
+      <p class="source"><strong>Primary framework:</strong> <a target="_blank" rel="noopener" href="https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes">FTC — Operation AI Comply enforcement sweep</a> · Last reviewed 16 August 2026</p>
+    </article>
+    <article class="brief" id="oversight">
+      <div class="eyebrow">Brief 04 · Human oversight</div>
+      <h2>Before “human in the loop” counts as a control</h2>
+      <p class="callout"><strong>Use when:</strong> AI influences triage, ranking, recommendations, approvals, access, safety, rights, or opportunities.</p>
+      <div class="cols">
+        <div>
+          <h3>Required inputs</h3>
+          <ul><li>Decision map and affected people</li><li>Consequence, reversibility, and error detectability</li><li>Reviewer qualifications, workload, evidence, and authority</li><li>Notice, contest, remedy, monitoring, and pause conditions</li></ul>
+          <h3>Minimum procedure</h3>
+          <ol><li>Map the real decision and downstream action.</li><li>Name operator, reviewer, approver, escalation owner, and incident lead.</li><li>Define evidence and thresholds for release or rejection.</li><li>Give reviewers time and authority to disagree.</li><li>Design notice, correction, independent challenge, and remedy.</li><li>Monitor outcomes, subgroups, overrides, complaints, drift, misuse, and change.</li></ol>
+        </div>
+        <div>
+          <h3>Stop conditions</h3>
+          <ul><li>Reviewer cannot inspect evidence or override</li><li>Workload makes meaningful review impossible</li><li>Affected people cannot contest consequential errors</li><li>No monitoring, fallback, pause, or accountable owner</li></ul>
+          <p class="output"><strong>Required output:</strong> A control record naming people, evidence, decision rights, contest routes, metrics, thresholds, and incident actions.</p>
+          <h3>Worked example</h3>
+          <p class="example">A benefits-review prioritization model is treated as consequential triage because it can delay access even if it does not issue the final eligibility decision.</p>
+          <p class="callout"><strong>Working rule:</strong> Review without authority, evidence, or time is ceremony—not oversight.</p>
+        </div>
+      </div>
+      <div class="misuse"><h3>What commonly goes wrong with this brief</h3><p>Naming a reviewer without giving them time, evidence, or the authority to say no. Every one of the three is load-bearing. A reviewer who cannot inspect the basis of a recommendation is approving a number, and a reviewer measured on throughput will approve whatever arrives.</p></div>
+      <div class="checklist" data-brief="oversight">
+        <h3>Ready-to-use checklist</h3>
+        <p class="ck-note">Ticks are remembered in this browser only. Nothing is sent anywhere, and clearing your browser data clears them.</p>
+        <label><input type="checkbox" data-ck="oversight-0"> <span>Decision map and affected people</span></label>
+        <label><input type="checkbox" data-ck="oversight-1"> <span>Consequence, reversibility, and error detectability</span></label>
+        <label><input type="checkbox" data-ck="oversight-2"> <span>Reviewer qualifications, workload, evidence, and authority</span></label>
+        <label><input type="checkbox" data-ck="oversight-3"> <span>Notice, contest, remedy, monitoring, and pause conditions</span></label>
+        <label><input type="checkbox" data-ck="oversight-4"> <span>Map the real decision and downstream action.</span></label>
+        <label><input type="checkbox" data-ck="oversight-5"> <span>Name operator, reviewer, approver, escalation owner, and incident lead.</span></label>
+        <label><input type="checkbox" data-ck="oversight-6"> <span>Define evidence and thresholds for release or rejection.</span></label>
+        <label><input type="checkbox" data-ck="oversight-7"> <span>Give reviewers time and authority to disagree.</span></label>
+        <label><input type="checkbox" data-ck="oversight-8"> <span>Design notice, correction, independent challenge, and remedy.</span></label>
+        <label><input type="checkbox" data-ck="oversight-9"> <span>Monitor outcomes, subgroups, overrides, complaints, drift, misuse, and change.</span></label>
+      </div>
+      <p class="source"><strong>Primary framework:</strong> <a target="_blank" rel="noopener" href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a> · Last reviewed 16 August 2026</p>
+    </article>
+    <article class="brief" id="incident">
+      <div class="eyebrow">Brief 05 · Incident response</div>
+      <h2>When AI use may have caused harm or exposure</h2>
+      <p class="callout"><strong>Use when:</strong> A complaint, near miss, disclosure, unsafe output, discriminatory effect, rights error, outage, or unauthorized use appears.</p>
+      <div class="cols">
+        <div>
+          <h3>Required inputs</h3>
+          <ul><li>Prompts, outputs, logs, versions, data paths, approvals</li><li>Affected people, systems, decisions, and timeframe</li><li>Policies, contracts, notification duties, and owners</li><li>Prior incidents, monitoring signals, and changes</li></ul>
+          <h3>Minimum procedure</h3>
+          <ol><li>Protect people and contain ongoing impact.</li><li>Preserve evidence without quietly overwriting records.</li><li>Notify designated legal, privacy, security, clinical, or operational owners as applicable.</li><li>Assess scope, severity, affected groups, and notification/remedy duties.</li><li>Identify root and contributing causes across the full system.</li><li>Implement, assign, test, and monitor corrective actions before restart.</li></ol>
+        </div>
+        <div>
+          <h3>Stop conditions</h3>
+          <ul><li>Ongoing harm or exposure is not contained</li><li>Evidence is being lost</li><li>Required expertise or authority is absent</li><li>A proposed restart lacks verified controls</li></ul>
+          <p class="output"><strong>Required output:</strong> An incident record with timeline, impact, evidence, containment, notification, cause, repair, owner, deadline, and verification.</p>
+          <h3>Worked example</h3>
+          <p class="example">Confidential text appears in summaries: stop the workflow, preserve evidence, assess scope, contain access, support affected people, fix pathways, and verify before restart.</p>
+          <p class="callout"><strong>Working rule:</strong> A near miss is governance evidence. Capture it before conditions recur.</p>
+        </div>
+      </div>
+      <div class="misuse"><h3>What commonly goes wrong with this brief</h3><p>Fixing it quietly. The instinct to resolve an incident before anyone notices destroys the evidence, skips the notification duty, and guarantees the same failure recurs because nothing was recorded. Contain first, preserve second, and notify the named owner before you tidy.</p></div>
+      <div class="checklist" data-brief="incident">
+        <h3>Ready-to-use checklist</h3>
+        <p class="ck-note">Ticks are remembered in this browser only. Nothing is sent anywhere, and clearing your browser data clears them.</p>
+        <label><input type="checkbox" data-ck="incident-0"> <span>Prompts, outputs, logs, versions, data paths, approvals</span></label>
+        <label><input type="checkbox" data-ck="incident-1"> <span>Affected people, systems, decisions, and timeframe</span></label>
+        <label><input type="checkbox" data-ck="incident-2"> <span>Policies, contracts, notification duties, and owners</span></label>
+        <label><input type="checkbox" data-ck="incident-3"> <span>Prior incidents, monitoring signals, and changes</span></label>
+        <label><input type="checkbox" data-ck="incident-4"> <span>Protect people and contain ongoing impact.</span></label>
+        <label><input type="checkbox" data-ck="incident-5"> <span>Preserve evidence without quietly overwriting records.</span></label>
+        <label><input type="checkbox" data-ck="incident-6"> <span>Notify designated legal, privacy, security, clinical, or operational owners as applicable.</span></label>
+        <label><input type="checkbox" data-ck="incident-7"> <span>Assess scope, severity, affected groups, and notification/remedy duties.</span></label>
+        <label><input type="checkbox" data-ck="incident-8"> <span>Identify root and contributing causes across the full system.</span></label>
+        <label><input type="checkbox" data-ck="incident-9"> <span>Implement, assign, test, and monitor corrective actions before restart.</span></label>
+      </div>
+      <p class="source"><strong>Primary framework:</strong> <a target="_blank" rel="noopener" href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence">NIST Generative AI Profile (AI 600-1)</a> · Last reviewed 16 August 2026</p>
+    </article>
+    <article class="brief" id="mental">
+      <div class="eyebrow">Brief 06 · Mental-health practice</div>
+      <h2>Before AI touches a therapeutic context</h2>
+      <p class="callout"><strong>Use when:</strong> AI supports administration, documentation, wellness conversation, clinical decisions, crisis response, diagnosis, or treatment.</p>
+      <div class="cols">
+        <div>
+          <h3>Required inputs</h3>
+          <ul><li>Intended function, user, setting, and clinical responsibility</li><li>Study population, comparator, endpoints, attrition, exclusions, follow-up</li><li>Privacy, consent, secondary use, and vendor controls</li><li>Bias, crisis limits, escalation, monitoring, and evidence</li></ul>
+          <h3>Minimum procedure</h3>
+          <ol><li>Separate administrative, supportive, diagnostic, treatment, and crisis functions.</li><li>Match evidence to the exact product, population, outcome, and setting.</li><li>Distinguish engagement, satisfaction, access, symptom change, safety, and clinical benefit.</li><li>Evaluate exclusions, subgroup performance, attrition, and adverse events.</li><li>Define clinician responsibility, disclosure, consent, crisis escalation, and fallback.</li><li>Monitor outcomes, complaints, unsafe responses, unequal effects, and system changes.</li></ol>
+        </div>
+        <div>
+          <h3>Stop conditions</h3>
+          <ul><li>Marketing exceeds product-specific evidence</li><li>Crisis or complex users are excluded without a safe route</li><li>Privacy, consent, or clinical responsibility is unresolved</li><li>No qualified escalation, adverse-event, or monitoring process</li></ul>
+          <p class="output"><strong>Required output:</strong> A bounded use statement, evidence table, risk/control register, responsible clinician/owner, prohibited uses, and monitoring plan.</p>
+          <h3>Worked example</h3>
+          <p class="example">An empathic chatbot is not described as therapeutic because conversational quality alone does not establish efficacy, safety, confidentiality, or clinical judgment.</p>
+          <p class="callout"><strong>Working rule:</strong> Sounding empathic is not evidence of safe or effective therapy.</p>
+        </div>
+      </div>
+      <div class="misuse"><h3>What commonly goes wrong with this brief</h3><p>Reading an evidence base for a category rather than for the product in front of you. Studies of one conversational agent, in one population, against one comparator, do not transfer to a different tool because both are described as AI mental-health support.</p></div>
+      <div class="checklist" data-brief="mental">
+        <h3>Ready-to-use checklist</h3>
+        <p class="ck-note">Ticks are remembered in this browser only. Nothing is sent anywhere, and clearing your browser data clears them.</p>
+        <label><input type="checkbox" data-ck="mental-0"> <span>Intended function, user, setting, and clinical responsibility</span></label>
+        <label><input type="checkbox" data-ck="mental-1"> <span>Study population, comparator, endpoints, attrition, exclusions, follow-up</span></label>
+        <label><input type="checkbox" data-ck="mental-2"> <span>Privacy, consent, secondary use, and vendor controls</span></label>
+        <label><input type="checkbox" data-ck="mental-3"> <span>Bias, crisis limits, escalation, monitoring, and evidence</span></label>
+        <label><input type="checkbox" data-ck="mental-4"> <span>Separate administrative, supportive, diagnostic, treatment, and crisis functions.</span></label>
+        <label><input type="checkbox" data-ck="mental-5"> <span>Match evidence to the exact product, population, outcome, and setting.</span></label>
+        <label><input type="checkbox" data-ck="mental-6"> <span>Distinguish engagement, satisfaction, access, symptom change, safety, and clinical benefit.</span></label>
+        <label><input type="checkbox" data-ck="mental-7"> <span>Evaluate exclusions, subgroup performance, attrition, and adverse events.</span></label>
+        <label><input type="checkbox" data-ck="mental-8"> <span>Define clinician responsibility, disclosure, consent, crisis escalation, and fallback.</span></label>
+        <label><input type="checkbox" data-ck="mental-9"> <span>Monitor outcomes, complaints, unsafe responses, unequal effects, and system changes.</span></label>
+      </div>
+      <p class="source"><strong>Primary framework:</strong> <a target="_blank" rel="noopener" href="https://www.who.int/publications/i/item/9789240029200">WHO — Ethics and governance of AI for health</a> · Last reviewed 16 August 2026</p>
+    </article>
+    </section>
+    <div class="reset-row" hidden data-jsonly><button type="button" class="print" id="resetChecks">Clear all checklist ticks in this browser</button></div>
+    </main><script>
+/* Enhancement only: all six briefs are in the HTML above. This remembers your
+   ticks in this browser and adds a per-brief print button. */
+(function(){
+  /* Controls below do nothing without scripting, so they ship hidden and are revealed here. */
+  [].forEach.call(document.querySelectorAll('[data-jsonly]'),function(el){ el.hidden=false; });
+  var KEY='myelin-brief-checks-v1', state={};
+  try{ state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ state={}; }
+  [].forEach.call(document.querySelectorAll('input[data-ck]'),function(box){
+    var k=box.getAttribute('data-ck');
+    box.checked=!!state[k];
+    box.addEventListener('change',function(){
+      if(box.checked) state[k]=1; else delete state[k];
+      try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){}
+      paint();
+    });
+  });
+  function paint(){
+    [].forEach.call(document.querySelectorAll('.checklist'),function(cl){
+      var boxes=[].slice.call(cl.querySelectorAll('input[data-ck]'));
+      var n=boxes.filter(function(b){return b.checked;}).length;
+      var el=cl.querySelector('.ck-count');
+      if(!el){ el=document.createElement('p'); el.className='ck-count'; el.setAttribute('role','status'); el.setAttribute('aria-live','polite'); cl.querySelector('.ck-note').insertAdjacentElement('afterend',el); }
+      el.textContent=n+' of '+boxes.length+' complete';
+      el.classList.toggle('done',n===boxes.length);
+    });
+  }
+  paint();
+  [].forEach.call(document.querySelectorAll('.brief'),function(a){
+    var btn=document.createElement('button');
+    btn.type='button'; btn.className='print'; btn.textContent='Print this brief';
+    btn.addEventListener('click',function(){
+      document.body.classList.add('printing-one'); a.classList.add('printing');
+      window.print();
+      a.classList.remove('printing'); document.body.classList.remove('printing-one');
+    });
+    a.appendChild(btn);
+  });
+  var reset=document.getElementById('resetChecks');
+  if(reset) reset.addEventListener('click',function(){
+    if(!confirm('Clear every checklist tick stored in this browser?')) return;
+    state={}; try{ localStorage.removeItem(KEY); }catch(e){}
+    [].forEach.call(document.querySelectorAll('input[data-ck]'),function(b){b.checked=false;});
+    paint();
+  });
+})();
 </script></body></html>

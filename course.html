@@ -1,36 +1,211 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI-7 · Responsible AI Verification Lab | Myelin</title><meta name="description" content="A free, non-credit, browser-local microcourse on verifying generative AI in professional work."><link rel="canonical" href="https://myelin-ce.vercel.app/course"><style>
-:root{--plum:#4a2a4e;--plum2:#6b3f6e;--gold:#c98d2e;--gold-text:#916621;--cream:#f7f2e8;--paper:#fffdf8;--ink:#281f2b;--muted:#6b6470;--line:#ddd2c1;--green:#256448;--red:#9b3b2b}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}a{color:var(--plum2);text-underline-offset:3px}button{font:inherit}.shell{display:grid;grid-template-columns:280px minmax(0,850px);gap:2rem;max-width:1180px;margin:auto;padding:1.2rem}.side{position:sticky;top:1rem;align-self:start;background:var(--plum);color:white;border-radius:16px;padding:1.25rem}.side a{color:white}.side h2{font:600 1.45rem Georgia,serif}.meter{height:10px;background:rgba(255,255,255,.2);border-radius:10px;overflow:hidden}.meter i{display:block;width:0;height:100%;background:var(--gold);transition:width .25s}.lesson-nav{display:grid;gap:.45rem;margin:1rem 0}.lesson-nav button{border:1px solid rgba(255,255,255,.2);background:transparent;color:white;text-align:left;padding:.65rem;border-radius:7px;cursor:pointer}.lesson-nav button.active{background:white;color:var(--plum)}.lesson-nav button.done::after{content:' ✓';color:#aee2c2}.main{min-width:0}.hero{padding:2rem 0}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:800;color:var(--gold-text)}h1,h2,h3{font-family:Georgia,serif;line-height:1.15}h1{font-size:clamp(2.6rem,7vw,5rem);margin:.15em 0}.notice{background:#fff4d9;border:1px solid #d9ab5d;border-radius:11px;padding:1rem}.lesson,.quiz,.record{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:clamp(1.2rem,4vw,2rem);margin:1rem 0}.lesson[hidden]{display:none}.objective{border-left:4px solid var(--gold);padding:.7rem 1rem;background:#fbf5e8}.source{background:#f2edf3;border-radius:8px;padding:.8rem;font-size:.88rem}.scenario{border:1px solid var(--line);border-radius:10px;padding:1rem;margin:1rem 0}.check{display:flex;gap:.7rem;align-items:flex-start;background:#f5f1e9;padding:.75rem;border-radius:8px}.actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1rem}.btn{border:0;border-radius:999px;background:var(--plum);color:white;padding:.7rem 1.1rem;font-weight:750;cursor:pointer}.btn.secondary{background:transparent;color:var(--plum);border:1px solid var(--plum)}fieldset{border:0;border-top:1px solid var(--line);padding:1rem 0;margin:0}fieldset legend{font-weight:750;padding-right:.5rem}label.answer{display:block;border:1px solid var(--line);border-radius:8px;padding:.7rem;margin:.45rem 0;cursor:pointer}.feedback{font-size:.88rem;margin:.4rem 0 1rem;color:var(--muted)}.feedback.correct{color:var(--green)}.feedback.incorrect{color:var(--red)}.record{display:none;border:2px solid var(--plum)}.record.show{display:block}.record-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem}.datum{background:#f4edf4;border-radius:8px;padding:.8rem}.datum strong{display:block}.status{font-weight:800;color:var(--green)}footer{padding:2rem 0;color:var(--muted);font-size:.85rem}@media(max-width:800px){.shell{grid-template-columns:1fr}.side{position:static}.lesson-nav{grid-template-columns:repeat(2,1fr)}}@media print{.side,.actions,.quiz,.notice,footer,.lesson{display:none!important}.shell{display:block}.record{display:block!important;border:2px solid #000}.main{max-width:none}.hero{padding:0}body{background:white}}
-</style><meta property="og:type" content="website"><meta property="og:title" content="AI-7"><meta property="og:description" content="A free, non-credit, browser-local microcourse on verifying generative AI in professional work."><meta property="og:url" content="https://myelin-ce.vercel.app/course"><meta property="og:image" content="https://myelin-ce.vercel.app/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://myelin-ce.vercel.app/og.png"><link rel="icon" type="image/png" href="/icon-myelin-192.png"><link rel="apple-touch-icon" href="/icon-myelin-180.png"></head><body><div class="shell"><aside class="side"><a href="/">← Myelin Learning Lab</a><h2>AI-7 Verification Lab</h2><p id="progressText">0 of 5 lessons complete</p><div class="meter" aria-hidden="true"><i id="bar"></i></div><nav class="lesson-nav" aria-label="Course lessons" id="lessonNav"></nav><p style="font-size:.78rem;color:#e7ddea">Progress and quiz attempts remain only in this browser.</p><a href="/status" style="font-size:.82rem">Credential status</a></aside><main class="main"><header class="hero"><div class="eyebrow">Free · non-credit · approximately 45 minutes</div><h1>Question AI before you trust it.</h1><p>A practical microcourse for professionals who need a repeatable way to test generated output, protect sensitive information, and document human judgment.</p><div class="notice"><strong>Credential boundary:</strong> This activity awards <strong>0.0 CE credits</strong>. Myelin is not an accredited provider. Completion unlocks a browser-generated non-credit learning record—not a certificate or license-renewal document.</div></header><section id="lessons"></section>
-<section class="quiz" id="quizSection"><div class="eyebrow">Mastery check</div><h2>Eight questions · 80% required</h2><p>You must finish all five lessons and answer at least 7 of 8 questions correctly. Attempts are stored locally. Questions provide feedback after submission.</p><form id="quiz"></form><div class="actions"><button class="btn" type="submit" form="quiz">Score attempt</button><button class="btn secondary" type="button" id="resetQuiz">Clear answers</button></div><p id="result" role="status" aria-live="polite"></p></section>
+:root{--plum:#4a2a4e;--plum2:#6b3f6e;--gold:#c98d2e;--gold-text:#916621;--cream:#f7f2e8;--paper:#fffdf8;--ink:#281f2b;--muted:#6b6470;--line:#ddd2c1;--green:#256448;--red:#9b3b2b}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}a{color:var(--plum2);text-underline-offset:3px}button{font:inherit}.shell{display:grid;grid-template-columns:280px minmax(0,850px);gap:2rem;max-width:1180px;margin:auto;padding:1.2rem}.side{position:sticky;top:1rem;align-self:start;background:var(--plum);color:white;border-radius:16px;padding:1.25rem}.side a{color:white}.side h2{font:600 1.45rem Georgia,serif}.meter{height:10px;background:rgba(255,255,255,.2);border-radius:10px;overflow:hidden}.meter i{display:block;width:0;height:100%;background:var(--gold);transition:width .25s}.lesson-nav{display:grid;gap:.45rem;margin:1rem 0}.lesson-nav button{border:1px solid rgba(255,255,255,.2);background:transparent;color:white;text-align:left;padding:.65rem;border-radius:7px;cursor:pointer}.lesson-nav button.active{background:white;color:var(--plum)}.lesson-nav button.done::after{content:' ✓';color:#aee2c2}.main{min-width:0}.hero{padding:2rem 0}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:800;color:var(--gold-text)}h1,h2,h3{font-family:Georgia,serif;line-height:1.15}h1{font-size:clamp(2.6rem,7vw,5rem);margin:.15em 0}.notice{background:#fff4d9;border:1px solid #d9ab5d;border-radius:11px;padding:1rem}.lesson,.quiz,.record{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:clamp(1.2rem,4vw,2rem);margin:1rem 0}.lesson[hidden]{display:none}.objective{border-left:4px solid var(--gold);padding:.7rem 1rem;background:#fbf5e8}.source{background:#f2edf3;border-radius:8px;padding:.8rem;font-size:.88rem}.scenario{border:1px solid var(--line);border-radius:10px;padding:1rem;margin:1rem 0}.check{display:flex;gap:.7rem;align-items:flex-start;background:#f5f1e9;padding:.75rem;border-radius:8px}.actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1rem}.btn{border:0;border-radius:999px;background:var(--plum);color:white;padding:.7rem 1.1rem;font-weight:750;cursor:pointer}.btn.secondary{background:transparent;color:var(--plum);border:1px solid var(--plum)}fieldset{border:0;border-top:1px solid var(--line);padding:1rem 0;margin:0}fieldset legend{font-weight:750;padding-right:.5rem}label.answer{display:block;border:1px solid var(--line);border-radius:8px;padding:.7rem;margin:.45rem 0;cursor:pointer}.feedback{font-size:.88rem;margin:.4rem 0 1rem;color:var(--muted)}.feedback.correct{color:var(--green)}.feedback.incorrect{color:var(--red)}.record{display:none;border:2px solid var(--plum)}.record.show{display:block}.record-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem}.datum{background:#f4edf4;border-radius:8px;padding:.8rem}.datum strong{display:block}.status{font-weight:800;color:var(--green)}footer{padding:2rem 0;color:var(--muted);font-size:.85rem}@media(max-width:800px){.shell{grid-template-columns:1fr}.side{position:static}.lesson-nav{grid-template-columns:repeat(2,1fr)}}@media print{.side,.actions,.quiz,.notice,footer{display:none!important}.lesson{break-inside:avoid}.shell{display:block}.record{display:block!important;border:2px solid #000}.main{max-width:none}.hero{padding:0}body{background:white}}
+.side-h{font:600 1.45rem Georgia,serif;margin:.4rem 0}.lesson-nav a{display:block;border:1px solid rgba(255,255,255,.28);background:transparent;color:white;text-align:left;padding:.65rem;border-radius:7px;text-decoration:none;font-size:.9rem;line-height:1.35}.lesson-nav a:hover{background:rgba(255,255,255,.12)}.lesson-nav a.done::after{content:' \2713';color:#aee2c2}.lesson{scroll-margin-top:1rem}.lesson h2{font-size:clamp(1.4rem,3.4vw,2rem);margin:.2em 0 .5em}.lesson h3{font-size:1.02rem;margin:1.2rem 0 .3rem}.lesson p,.lesson li{max-width:72ch}.read-guide{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--plum);border-radius:15px;padding:clamp(1.2rem,4vw,2rem);margin:1rem 0}.read-guide h2{margin-top:0;font-size:clamp(1.4rem,3.4vw,2rem)}.read-guide p{max-width:72ch}a:focus-visible,button:focus-visible,input:focus-visible,label.answer:focus-within{outline:3px solid var(--plum);outline-offset:2px}.side a:focus-visible,.lesson-nav a:focus-visible{outline:3px solid #f7d9a0;outline-offset:2px}.btn{min-height:44px}.lesson,.read-guide,.quiz{overflow-wrap:anywhere}</style><meta property="og:type" content="website"><meta property="og:title" content="AI-7"><meta property="og:description" content="A free, non-credit, browser-local microcourse on verifying generative AI in professional work."><meta property="og:url" content="https://myelin-ce.vercel.app/course"><meta property="og:image" content="https://myelin-ce.vercel.app/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://myelin-ce.vercel.app/og.png"><link rel="icon" type="image/png" href="/icon-myelin-192.png"><link rel="apple-touch-icon" href="/icon-myelin-180.png"></head><body><div class="shell"><aside class="side"><a href="/">← Myelin Learning Lab</a><p class="side-h">AI-7 Verification Lab</p><p id="progressText">0 of 5 lessons complete</p><div class="meter" aria-hidden="true"><i id="bar"></i></div><nav class="lesson-nav" aria-label="Course lessons" id="lessonNav"><a href="#lesson0" data-go="0">1 · What a language model does</a><a href="#lesson1" data-go="1">2 · Source and claim verification</a><a href="#lesson2" data-go="2">3 · Privacy before prompting</a><a href="#lesson3" data-go="3">4 · Human judgment and escalation</a><a href="#lesson4" data-go="4">5 · Build an evidence record</a></nav><p style="font-size:.78rem;color:#e7ddea">Progress and quiz attempts remain only in this browser.</p><a href="/status" style="font-size:.82rem">Credential status</a></aside><main class="main"><header class="hero"><div class="eyebrow">Free · non-credit · approximately 45 minutes</div><h1>Question AI before you trust it.</h1><p>A practical microcourse for professionals who need a repeatable way to test generated output, protect sensitive information, and document human judgment.</p><div class="notice"><strong>Credential boundary:</strong> This activity awards <strong>0.0 CE credits</strong>. Myelin is not an accredited provider. Completion unlocks a browser-generated non-credit learning record—not a certificate or license-renewal document.</div></header><section class="read-guide" aria-labelledby="howto">
+  <h2 id="howto">How this course works, and what it is not</h2>
+  <p>Five lessons, then eight questions. The lessons are all on this page at once — nothing is unlocked, gated, or held back, and you can read the whole thing without ticking a single box. The tick boxes and the mastery check exist so <em>you</em> can tell whether the material landed, not so this site can decide whether you are allowed to continue.</p>
+  <p><strong>What you will be able to do afterwards:</strong> take a piece of generated text and separate the part that is a claim from the part that is phrasing; open a source and check whether it supports the specific proposition rather than the general topic; decide whether information may enter a tool before you paste it; and leave behind a record another qualified person could follow.</p>
+  <p><strong>Why it is built as decisions rather than definitions.</strong> Nobody is harmed by not knowing what a transformer is. People are harmed when a fabricated citation reaches a filing, when confidential material is pasted into a tool nobody vetted, or when a review step exists on paper and not in anyone's calendar. Those are decisions, so the questions are decisions too.</p>
+  <p><strong>What commonly goes wrong:</strong> treating verification as something you do to work you already distrust. The claims that cause real damage are the ones nobody thought to check — the confident round number, the statute everyone knows, the study everybody cites. The habit this course is trying to build is applying the same loop to the sentences that feel safest.</p>
+  <p><strong>The boundary, stated plainly:</strong> this activity awards <strong>0.0 CE credits</strong>. Myelin is not an accredited or approved continuing-education provider, nothing here is reported to a licensing board, and your identity is never verified. If you need credit that counts, see <a href="/status">credential status</a> for what to look for instead.</p>
+</section>
+<section id="lessons">
+  <article class="lesson" id="lesson0">
+    <div class="eyebrow">Lesson 1 of 5</div>
+    <h2>What a language model does</h2>
+    <p class="objective"><strong>Objective:</strong> Distinguish generated fluency from verified knowledge.</p>
+    <p>A language model generates likely sequences from patterns in training and context. It can produce useful synthesis, but a polished sentence is not evidence that the underlying proposition is true.</p><div class="scenario"><strong>Failure pattern:</strong> A draft cites a plausible case, study, regulation, or statistic that does not exist—or that does not support the stated proposition.</div><h3>Working rule</h3><p>Separate <em>generation</em> from <em>verification</em>. Use the model to structure possibilities; use authoritative sources to establish facts.</p>
+    <p class="source"><strong>Evidence note:</strong> NIST frames AI risk management across design, development, deployment, and use; the Generative AI Profile identifies risks specific to generative systems.</p>
+    <div class="check" hidden data-jsonly><input id="done0" type="checkbox"><label for="done0">I reviewed this lesson and can apply its objective.</label></div>
+  </article>
+  <article class="lesson" id="lesson1">
+    <div class="eyebrow">Lesson 2 of 5</div>
+    <h2>Source and claim verification</h2>
+    <p class="objective"><strong>Objective:</strong> Apply a proposition-level verification loop.</p>
+    <ol><li>Underline every material factual or legal claim.</li><li>Open the cited source—never rely on a generated citation alone.</li><li>Locate the exact passage, table, holding, rule, or data definition.</li><li>Check date, jurisdiction, population, methods, limitations, and later updates.</li><li>Rewrite the claim to match what the source actually establishes.</li></ol><div class="scenario"><strong>Practice:</strong> “The source discusses X” is not enough. Record the proposition, source URL, pinpoint location, access date, and reviewer.</div>
+    <p class="source"><strong>Evidence note:</strong> NIST’s AI Resource Center emphasizes testing, evaluation, verification, and validation as operational practices.</p>
+    <div class="check" hidden data-jsonly><input id="done1" type="checkbox"><label for="done1">I reviewed this lesson and can apply its objective.</label></div>
+  </article>
+  <article class="lesson" id="lesson2">
+    <div class="eyebrow">Lesson 3 of 5</div>
+    <h2>Privacy before prompting</h2>
+    <p class="objective"><strong>Objective:</strong> Classify information before it enters an AI system.</p>
+    <p>Do not place confidential, privileged, protected health, student, employee, client, or proprietary information into a tool merely because the interface feels private.</p><h3>Minimum intake questions</h3><ul><li>What data is being entered?</li><li>Is the vendor contractually permitted to retain or train on it?</li><li>Which organizational policy, professional duty, or law applies?</li><li>Can the task be completed with redacted, synthetic, or local data?</li></ul><div class="scenario"><strong>Stop condition:</strong> If authority, retention, or destination is unclear, do not upload the information.</div>
+    <p class="source"><strong>Evidence note:</strong> HHS directs covered entities and consumers to current HIPAA Privacy and Security Rule guidance; applicability depends on the entity, data, and relationship.</p>
+    <div class="check" hidden data-jsonly><input id="done2" type="checkbox"><label for="done2">I reviewed this lesson and can apply its objective.</label></div>
+  </article>
+  <article class="lesson" id="lesson3">
+    <div class="eyebrow">Lesson 4 of 5</div>
+    <h2>Human judgment and escalation</h2>
+    <p class="objective"><strong>Objective:</strong> Define decisions AI may support and decisions requiring escalation.</p>
+    <p>A human-in-the-loop label is meaningless unless responsibility is assigned. Define who reviews, what evidence they inspect, what conditions require escalation, and who may approve release.</p><ul><li><strong>Low stakes:</strong> formatting or brainstorming with no sensitive data.</li><li><strong>Moderate stakes:</strong> factual drafts requiring source verification.</li><li><strong>High stakes:</strong> legal, clinical, employment, safety, financial, or rights-affecting decisions—require qualified review and an auditable basis.</li></ul>
+    <p class="source"><strong>Evidence note:</strong> NIST AI RMF organizes governance through GOVERN, MAP, MEASURE, and MANAGE functions and treats risk management as a lifecycle activity.</p>
+    <div class="check" hidden data-jsonly><input id="done3" type="checkbox"><label for="done3">I reviewed this lesson and can apply its objective.</label></div>
+  </article>
+  <article class="lesson" id="lesson4">
+    <div class="eyebrow">Lesson 5 of 5</div>
+    <h2>Build an evidence record</h2>
+    <p class="objective"><strong>Objective:</strong> Document enough information for another person to reproduce the decision.</p>
+    <p>A defensible workflow records: purpose, model/tool, date, data classification, prompt scope, sources checked, material edits, reviewer, unresolved uncertainty, and final approval.</p><div class="scenario"><strong>Completion standard:</strong> Another qualified person should be able to understand what the model contributed, what the evidence established, and where human judgment changed the output.</div><p>This course’s completion record follows the same principle: lesson states, attempt count, score, time, version, and non-credit status are exportable without sending them to Myelin.</p>
+    <p class="source"><strong>Evidence note:</strong> NIST describes documentation and repeatable risk-management practices as part of operationalizing trustworthy AI.</p>
+    <div class="check" hidden data-jsonly><input id="done4" type="checkbox"><label for="done4">I reviewed this lesson and can apply its objective.</label></div>
+  </article>
+</section>
+<section class="quiz" id="quizSection"><div class="eyebrow">Mastery check</div><h2>Eight questions · 80% required</h2><p>You must finish all five lessons and answer at least 7 of 8 questions correctly. Attempts are stored locally. Questions provide feedback after submission.</p><form id="quiz">
+    <fieldset>
+      <legend>1. Fluent AI output should be treated as:</legend>
+      <label class="answer"><input type="radio" name="q0" value="0" required> <span>Proof of correctness</span></label>
+      <label class="answer"><input type="radio" name="q0" value="1" required> <span>A draft requiring verification</span></label>
+      <label class="answer"><input type="radio" name="q0" value="2" required> <span>A confidential source</span></label>
+      <p class="feedback" id="fb0"></p>
+    </fieldset>
+    <fieldset>
+      <legend>2. A generated citation should first be:</legend>
+      <label class="answer"><input type="radio" name="q1" value="0" required> <span>Opened and checked against the exact proposition</span></label>
+      <label class="answer"><input type="radio" name="q1" value="1" required> <span>Copied into the final document</span></label>
+      <label class="answer"><input type="radio" name="q1" value="2" required> <span>Assumed accurate if formatted correctly</span></label>
+      <p class="feedback" id="fb1"></p>
+    </fieldset>
+    <fieldset>
+      <legend>3. Before entering client information, the safest default is:</legend>
+      <label class="answer"><input type="radio" name="q2" value="0" required> <span>Upload it and delete later</span></label>
+      <label class="answer"><input type="radio" name="q2" value="1" required> <span>Remove sensitive data and confirm authority, policy, and vendor terms</span></label>
+      <label class="answer"><input type="radio" name="q2" value="2" required> <span>Ask the model whether it is private</span></label>
+      <p class="feedback" id="fb2"></p>
+    </fieldset>
+    <fieldset>
+      <legend>4. A meaningful human review process identifies:</legend>
+      <label class="answer"><input type="radio" name="q3" value="0" required> <span>A reviewer, evidence, escalation conditions, and approval authority</span></label>
+      <label class="answer"><input type="radio" name="q3" value="1" required> <span>Only that a person glanced at the output</span></label>
+      <label class="answer"><input type="radio" name="q3" value="2" required> <span>The model with the highest benchmark score</span></label>
+      <p class="feedback" id="fb3"></p>
+    </fieldset>
+    <fieldset>
+      <legend>5. For a rights-affecting decision, AI output should:</legend>
+      <label class="answer"><input type="radio" name="q4" value="0" required> <span>Determine the outcome automatically</span></label>
+      <label class="answer"><input type="radio" name="q4" value="1" required> <span>Support qualified review with an auditable basis</span></label>
+      <label class="answer"><input type="radio" name="q4" value="2" required> <span>Replace source documents</span></label>
+      <p class="feedback" id="fb4"></p>
+    </fieldset>
+    <fieldset>
+      <legend>6. Proposition-level verification means:</legend>
+      <label class="answer"><input type="radio" name="q5" value="0" required> <span>Confirming the source discusses the topic generally</span></label>
+      <label class="answer"><input type="radio" name="q5" value="1" required> <span>Matching the exact claim to supporting material and limits</span></label>
+      <label class="answer"><input type="radio" name="q5" value="2" required> <span>Checking that the URL loads</span></label>
+      <p class="feedback" id="fb5"></p>
+    </fieldset>
+    <fieldset>
+      <legend>7. If retention or destination is unclear, you should:</legend>
+      <label class="answer"><input type="radio" name="q6" value="0" required> <span>Proceed with initials only</span></label>
+      <label class="answer"><input type="radio" name="q6" value="1" required> <span>Stop and resolve the data-governance question</span></label>
+      <label class="answer"><input type="radio" name="q6" value="2" required> <span>Use a longer prompt</span></label>
+      <p class="feedback" id="fb6"></p>
+    </fieldset>
+    <fieldset>
+      <legend>8. An adequate evidence record lets another qualified person:</legend>
+      <label class="answer"><input type="radio" name="q7" value="0" required> <span>Reproduce the decision path</span></label>
+      <label class="answer"><input type="radio" name="q7" value="1" required> <span>See only the final prose</span></label>
+      <label class="answer"><input type="radio" name="q7" value="2" required> <span>Skip unresolved uncertainty</span></label>
+      <p class="feedback" id="fb7"></p>
+    </fieldset>
+  </form><div class="actions" hidden data-jsonly><button class="btn" type="submit" form="quiz">Score attempt</button><button class="btn secondary" type="button" id="resetQuiz">Clear answers</button></div><p id="result" role="status" aria-live="polite"></p></section>
 <section id="record" class="record" aria-labelledby="recordTitle"><div class="eyebrow">Browser-generated learning record</div><h2 id="recordTitle">AI-7 completed</h2><div class="record-grid"><div class="datum"><span>Learner</span><strong>Self-attested browser user</strong></div><div class="datum"><span>Completed</span><strong id="recordDate"></strong></div><div class="datum"><span>Mastery</span><strong id="recordScore"></strong></div><div class="datum"><span>Credit awarded</span><strong>0.0</strong></div><div class="datum"><span>Record ID</span><strong id="recordId"></strong></div><div class="datum"><span>Status</span><strong class="status">Non-credit</strong></div></div><p><strong>Not a certificate.</strong> Identity was not verified; no accreditor, licensing board, employer, or institution has approved this activity for credit.</p><div class="actions"><button class="btn" id="printRecord">Print / save record</button><button class="btn secondary" id="exportBtn">Export audit record</button></div></section>
-<div class="actions"><button class="btn secondary" id="exportProgress">Export progress</button><label class="btn secondary" for="importFile" style="cursor:pointer">Import progress</label><input id="importFile" type="file" accept="application/json" hidden><button class="btn secondary" id="deleteBtn">Delete local data</button></div><footer>Course sources: <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener noreferrer">NIST Generative AI Profile</a> · <a href="https://www.hhs.gov/answers/hipaa/where-can-i-find-information-about-health-information-privacy/index.html" target="_blank" rel="noopener noreferrer">HHS privacy guidance</a></footer></main></div><script>
-const lessons=[
-{title:'1 · What a language model does',objective:'Distinguish generated fluency from verified knowledge.',body:`<p>A language model generates likely sequences from patterns in training and context. It can produce useful synthesis, but a polished sentence is not evidence that the underlying proposition is true.</p><div class="scenario"><strong>Failure pattern:</strong> A draft cites a plausible case, study, regulation, or statistic that does not exist—or that does not support the stated proposition.</div><h3>Working rule</h3><p>Separate <em>generation</em> from <em>verification</em>. Use the model to structure possibilities; use authoritative sources to establish facts.</p>`,source:'NIST frames AI risk management across design, development, deployment, and use; the Generative AI Profile identifies risks specific to generative systems.'},
-{title:'2 · Source and claim verification',objective:'Apply a proposition-level verification loop.',body:`<ol><li>Underline every material factual or legal claim.</li><li>Open the cited source—never rely on a generated citation alone.</li><li>Locate the exact passage, table, holding, rule, or data definition.</li><li>Check date, jurisdiction, population, methods, limitations, and later updates.</li><li>Rewrite the claim to match what the source actually establishes.</li></ol><div class="scenario"><strong>Practice:</strong> “The source discusses X” is not enough. Record the proposition, source URL, pinpoint location, access date, and reviewer.</div>`,source:'NIST’s AI Resource Center emphasizes testing, evaluation, verification, and validation as operational practices.'},
-{title:'3 · Privacy before prompting',objective:'Classify information before it enters an AI system.',body:`<p>Do not place confidential, privileged, protected health, student, employee, client, or proprietary information into a tool merely because the interface feels private.</p><h3>Minimum intake questions</h3><ul><li>What data is being entered?</li><li>Is the vendor contractually permitted to retain or train on it?</li><li>Which organizational policy, professional duty, or law applies?</li><li>Can the task be completed with redacted, synthetic, or local data?</li></ul><div class="scenario"><strong>Stop condition:</strong> If authority, retention, or destination is unclear, do not upload the information.</div>`,source:'HHS directs covered entities and consumers to current HIPAA Privacy and Security Rule guidance; applicability depends on the entity, data, and relationship.'},
-{title:'4 · Human judgment and escalation',objective:'Define decisions AI may support and decisions requiring escalation.',body:`<p>A human-in-the-loop label is meaningless unless responsibility is assigned. Define who reviews, what evidence they inspect, what conditions require escalation, and who may approve release.</p><ul><li><strong>Low stakes:</strong> formatting or brainstorming with no sensitive data.</li><li><strong>Moderate stakes:</strong> factual drafts requiring source verification.</li><li><strong>High stakes:</strong> legal, clinical, employment, safety, financial, or rights-affecting decisions—require qualified review and an auditable basis.</li></ul>`,source:'NIST AI RMF organizes governance through GOVERN, MAP, MEASURE, and MANAGE functions and treats risk management as a lifecycle activity.'},
-{title:'5 · Build an evidence record',objective:'Document enough information for another person to reproduce the decision.',body:`<p>A defensible workflow records: purpose, model/tool, date, data classification, prompt scope, sources checked, material edits, reviewer, unresolved uncertainty, and final approval.</p><div class="scenario"><strong>Completion standard:</strong> Another qualified person should be able to understand what the model contributed, what the evidence established, and where human judgment changed the output.</div><p>This course’s completion record follows the same principle: lesson states, attempt count, score, time, version, and non-credit status are exportable without sending them to Myelin.</p>`,source:'NIST describes documentation and repeatable risk-management practices as part of operationalizing trustworthy AI.'}
-];
-const questions=[
-['Fluent AI output should be treated as:',['Proof of correctness','A draft requiring verification','A confidential source'],1,'Fluency is presentation, not evidence.'],
-['A generated citation should first be:',['Opened and checked against the exact proposition','Copied into the final document','Assumed accurate if formatted correctly'],0,'Open the source and verify the proposition.'],
-['Before entering client information, the safest default is:',['Upload it and delete later','Remove sensitive data and confirm authority, policy, and vendor terms','Ask the model whether it is private'],1,'Authority and data handling must be established before disclosure.'],
-['A meaningful human review process identifies:',['A reviewer, evidence, escalation conditions, and approval authority','Only that a person glanced at the output','The model with the highest benchmark score'],0,'Named responsibility and evidence make oversight operational.'],
-['For a rights-affecting decision, AI output should:',['Determine the outcome automatically','Support qualified review with an auditable basis','Replace source documents'],1,'High-stakes decisions require qualified judgment and evidence.'],
-['Proposition-level verification means:',['Confirming the source discusses the topic generally','Matching the exact claim to supporting material and limits','Checking that the URL loads'],1,'The exact claim must fit the source’s actual support and limitations.'],
-['If retention or destination is unclear, you should:',['Proceed with initials only','Stop and resolve the data-governance question','Use a longer prompt'],1,'Unclear authority or data handling is a stop condition.'],
-['An adequate evidence record lets another qualified person:',['Reproduce the decision path','See only the final prose','Skip unresolved uncertainty'],0,'Reproducibility requires inputs, sources, review, uncertainty, and approval.']
-];
-const key='myelin-ai7-v2',version='2.1';let state={lessons:Array(5).fill(false),attempts:[],passed:false,completedAt:null,completionScore:null,recordId:null};try{state={...state,...JSON.parse(localStorage.getItem(key)||'{}')}}catch{};let active=0;
-const lessonNav=document.getElementById('lessonNav'),progressText=document.getElementById('progressText'),bar=document.getElementById('bar'),lessonsEl=document.getElementById('lessons'),quiz=document.getElementById('quiz'),result=document.getElementById('result'),record=document.getElementById('record'),recordDate=document.getElementById('recordDate'),recordScore=document.getElementById('recordScore'),recordId=document.getElementById('recordId'),resetQuiz=document.getElementById('resetQuiz'),printRecord=document.getElementById('printRecord'),exportBtn=document.getElementById('exportBtn'),exportProgress=document.getElementById('exportProgress'),importFile=document.getElementById('importFile'),deleteBtn=document.getElementById('deleteBtn');
-function finalizeIfEligible(){const lastPassing=[...state.attempts].reverse().find(a=>a&&a.passed);if(lastPassing&&state.lessons.every(Boolean)&&!state.passed){state.passed=true;state.completedAt=new Date().toISOString();state.completionScore=lastPassing.score;state.recordId='MY-AI7-'+crypto.randomUUID().slice(0,8).toUpperCase()}}
-const save=()=>{finalizeIfEligible();localStorage.setItem(key,JSON.stringify(state));render()};
-function render(){lessonNav.innerHTML=lessons.map((l,i)=>`<button data-go="${i}" class="${i===active?'active ':''}${state.lessons[i]?'done':''}" aria-current="${i===active?'step':'false'}">${l.title}</button>`).join('');lessonNav.querySelectorAll('button').forEach(b=>b.onclick=()=>{active=+b.dataset.go;render();document.getElementById('lesson'+active).scrollIntoView({behavior:'smooth'})});lessonsEl.innerHTML=lessons.map((l,i)=>`<article class="lesson ${i===active?'print-target':''}" id="lesson${i}" ${i===active?'':'hidden'}><div class="eyebrow">Lesson ${i+1} of 5</div><h2>${l.title.split(' · ').slice(1).join(' · ')}</h2><p class="objective"><strong>Objective:</strong> ${l.objective}</p>${l.body}<p class="source"><strong>Evidence note:</strong> ${l.source}</p><div class="check"><input id="done${i}" type="checkbox" ${state.lessons[i]?'checked':''}><label for="done${i}">I reviewed this lesson and can apply its objective.</label></div><div class="actions">${i>0?'<button class="btn secondary" data-prev>Previous</button>':''}${i<4?'<button class="btn" data-next>Next lesson</button>':'<a class="btn" href="#quizSection">Take mastery check</a>'}</div></article>`).join('');lessonsEl.querySelectorAll('input[type=checkbox]').forEach((x,i)=>x.onchange=()=>{state.lessons[i]=x.checked;save()});lessonsEl.querySelectorAll('[data-prev]').forEach(b=>b.onclick=()=>{active--;render()});lessonsEl.querySelectorAll('[data-next]').forEach(b=>b.onclick=()=>{active++;render()});const n=state.lessons.filter(Boolean).length;progressText.textContent=n+' of 5 lessons complete';bar.style.width=(n/5*100)+'%';const last=state.attempts.at(-1);result.textContent=last?`Latest attempt: ${last.score}/8 · ${last.passed?'passed':'not yet passed'} · ${state.attempts.length} attempt(s)`:'';record.classList.toggle('show',state.passed&&n===5);if(state.passed){recordDate.textContent=new Date(state.completedAt).toLocaleString();const completedScore=state.completionScore??last?.score??0;recordScore.textContent=completedScore+'/8 ('+Math.round(completedScore/8*100)+'%)';recordId.textContent=state.recordId}}
-quiz.innerHTML=questions.map((q,i)=>`<fieldset><legend>${i+1}. ${q[0]}</legend>${q[1].map((a,j)=>`<label class="answer"><input type="radio" name="q${i}" value="${j}" required> ${a}</label>`).join('')}<p class="feedback" id="fb${i}"></p></fieldset>`).join('');
-quiz.onsubmit=e=>{e.preventDefault();const f=new FormData(quiz);let score=0;questions.forEach((q,i)=>{const v=Number(f.get('q'+i)),ok=v===q[2];if(ok)score++;const el=document.getElementById('fb'+i);el.className='feedback '+(ok?'correct':'incorrect');el.textContent=(ok?'Correct. ':'Review: ')+q[3]});const passed=score>=7;state.attempts.push({score,passed,at:new Date().toISOString()});if(passed&&!state.lessons.every(Boolean)){result.textContent='Mastery passed. Complete all five lesson attestations to unlock the record.'}save()};
-resetQuiz.onclick=()=>{quiz.reset();document.querySelectorAll('.feedback').forEach(x=>{x.textContent='';x.className='feedback'})};printRecord.onclick=()=>window.print();
-function download(data,name){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),0)}
-exportBtn.onclick=()=>download({schema:'myelin-learning-record',version,course:'AI-7',credit:0,credential:'non-credit record',...state},'myelin-ai7-learning-record.json');exportProgress.onclick=()=>download({schema:'myelin-progress',version,...state},'myelin-ai7-progress.json');
-importFile.onchange=async e=>{try{const x=JSON.parse(await e.target.files[0].text());if(x.schema!=='myelin-progress'||!Array.isArray(x.lessons)||x.lessons.length!==5)throw 0;state={...state,...x};save();alert('Progress imported.')}catch{alert('This is not a valid Myelin AI-7 progress file.')}e.target.value=''};
-deleteBtn.onclick=()=>{if(confirm('Delete all AI-7 progress and attempts from this browser?')){localStorage.removeItem(key);state={lessons:Array(5).fill(false),attempts:[],passed:false,completedAt:null,completionScore:null,recordId:null};quiz.reset();render()}};render();
+<div class="actions" hidden data-jsonly><button class="btn secondary" id="exportProgress">Export progress</button><label class="btn secondary" for="importFile" style="cursor:pointer">Import progress</label><input id="importFile" type="file" accept="application/json" hidden><button class="btn secondary" id="deleteBtn">Delete local data</button></div><footer>Course sources: <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">NIST AI RMF</a> · <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noopener noreferrer">NIST Generative AI Profile</a> · <a href="https://www.hhs.gov/answers/hipaa/where-can-i-find-information-about-health-information-privacy/index.html" target="_blank" rel="noopener noreferrer">HHS privacy guidance</a></footer></main></div><script>
+/* Enhancement only. All five lessons and all eight questions are in the HTML above
+   and readable with scripting off. This adds attestation memory, scoring, and the
+   browser-local record. Nothing leaves this browser. */
+(function(){
+  var ANSWERS=[[1,"Fluency is presentation, not evidence."],[0,"Open the source and verify the proposition."],[1,"Authority and data handling must be established before disclosure."],[0,"Named responsibility and evidence make oversight operational."],[1,"High-stakes decisions require qualified judgment and evidence."],[1,"The exact claim must fit the source’s actual support and limitations."],[1,"Unclear authority or data handling is a stop condition."],[0,"Reproducibility requires inputs, sources, review, uncertainty, and approval."]];
+  var KEY='myelin-ai7-v2', VERSION='2.1', LESSONS=5;
+  var blank={lessons:[false,false,false,false,false],attempts:[],passed:false,completedAt:null,completionScore:null,recordId:null};
+  var state=Object.assign({},blank);
+  try{ state=Object.assign(state,JSON.parse(localStorage.getItem(KEY)||'{}')); }catch(e){}
+  if(!Array.isArray(state.lessons)||state.lessons.length!==LESSONS) state.lessons=blank.lessons.slice();
+
+  var nav=document.getElementById('lessonNav'), progressText=document.getElementById('progressText'),
+      bar=document.getElementById('bar'), quiz=document.getElementById('quiz'), result=document.getElementById('result'),
+      record=document.getElementById('record'), recordDate=document.getElementById('recordDate'),
+      recordScore=document.getElementById('recordScore'), recordId=document.getElementById('recordId'),
+      resetQuiz=document.getElementById('resetQuiz'), printRecord=document.getElementById('printRecord'),
+      exportBtn=document.getElementById('exportBtn'), exportProgress=document.getElementById('exportProgress'),
+      importFile=document.getElementById('importFile'), deleteBtn=document.getElementById('deleteBtn');
+  var boxes=[]; for(var i=0;i<LESSONS;i++) boxes.push(document.getElementById('done'+i));
+  /* Controls below do nothing without scripting, so they ship hidden and are revealed here. */
+  [].forEach.call(document.querySelectorAll('[data-jsonly]'),function(el){ el.hidden=false; });
+
+
+  function finalize(){
+    var lastPassing=null;
+    for(var i=state.attempts.length-1;i>=0;i--){ if(state.attempts[i]&&state.attempts[i].passed){ lastPassing=state.attempts[i]; break; } }
+    if(lastPassing&&state.lessons.every(Boolean)&&!state.passed){
+      state.passed=true; state.completedAt=new Date().toISOString(); state.completionScore=lastPassing.score;
+      state.recordId='MY-AI7-'+(crypto.randomUUID?crypto.randomUUID().slice(0,8):String(Date.now()).slice(-8)).toUpperCase();
+    }
+  }
+  function save(){ finalize(); try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){} render(); }
+
+  function render(){
+    boxes.forEach(function(b,i){ if(b) b.checked=!!state.lessons[i]; });
+    [].forEach.call(nav.querySelectorAll('a'),function(a,i){ a.classList.toggle('done',!!state.lessons[i]); });
+    var n=state.lessons.filter(Boolean).length;
+    progressText.textContent=n+' of '+LESSONS+' lessons complete';
+    bar.style.width=(n/LESSONS*100)+'%';
+    var last=state.attempts[state.attempts.length-1];
+    result.textContent=last?('Latest attempt: '+last.score+'/8 · '+(last.passed?'passed':'not yet passed')+' · '+state.attempts.length+' attempt(s)'):'';
+    record.classList.toggle('show',state.passed&&n===LESSONS);
+    if(state.passed){
+      recordDate.textContent=new Date(state.completedAt).toLocaleString();
+      var cs=(state.completionScore!=null)?state.completionScore:(last?last.score:0);
+      recordScore.textContent=cs+'/8 ('+Math.round(cs/8*100)+'%)';
+      recordId.textContent=state.recordId;
+    }
+  }
+  boxes.forEach(function(b,i){ if(b) b.addEventListener('change',function(){ state.lessons[i]=b.checked; save(); }); });
+
+  quiz.addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=new FormData(quiz), score=0;
+    ANSWERS.forEach(function(a,i){
+      var v=Number(f.get('q'+i)), ok=v===a[0];
+      if(ok) score++;
+      var el=document.getElementById('fb'+i);
+      el.className='feedback '+(ok?'correct':'incorrect');
+      el.textContent=(ok?'Correct. ':'Review: ')+a[1];
+    });
+    var passed=score>=7;
+    state.attempts.push({score:score,passed:passed,at:new Date().toISOString()});
+    save();
+    if(passed&&!state.lessons.every(Boolean)){
+      result.textContent='Mastery passed. Complete all five lesson attestations to unlock the record.';
+    }
+  });
+  resetQuiz.addEventListener('click',function(){
+    quiz.reset();
+    [].forEach.call(document.querySelectorAll('.feedback'),function(x){ x.textContent=''; x.className='feedback'; });
+  });
+  printRecord.addEventListener('click',function(){ window.print(); });
+
+  function download(data,name){
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));
+    a.download=name; a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); },0);
+  }
+  exportBtn.addEventListener('click',function(){ download(Object.assign({schema:'myelin-learning-record',version:VERSION,course:'AI-7',credit:0,credential:'non-credit record'},state),'myelin-ai7-learning-record.json'); });
+  exportProgress.addEventListener('click',function(){ download(Object.assign({schema:'myelin-progress',version:VERSION},state),'myelin-ai7-progress.json'); });
+  importFile.addEventListener('change',function(e){
+    var file=e.target.files[0]; if(!file) return;
+    file.text().then(function(t){
+      var x=JSON.parse(t);
+      if(x.schema!=='myelin-progress'||!Array.isArray(x.lessons)||x.lessons.length!==LESSONS) throw new Error('bad file');
+      state=Object.assign(state,x); save(); alert('Progress imported.');
+    }).catch(function(){ alert('This is not a valid Myelin AI-7 progress file.'); })
+      .then(function(){ e.target.value=''; });
+  });
+  deleteBtn.addEventListener('click',function(){
+    if(!confirm('Delete all AI-7 progress and attempts from this browser?')) return;
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    state=Object.assign({},blank); state.lessons=blank.lessons.slice();
+    quiz.reset(); render();
+  });
+  render();
+})();
 </script></body></html>
