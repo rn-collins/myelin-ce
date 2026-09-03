@@ -1,0 +1,123 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Myelin — a field manual.
+
+   The colour here was never the problem: the aubergine and gold are Myelin's
+   and they stay. The type was. Every page was Georgia headings on system-ui
+   body over #f7f2e8 cream, with 14–16px rounded cards and 999px pill
+   buttons — the same page seven unrelated builds in this estate were
+   rendering, distinguishable only by accent hue.
+
+   These are continuing-education field briefs: material somebody carries into
+   a room, works through, ticks off and marks up. So it is set as a manual.
+   Bitter is a slab serif drawn to hold ink at small sizes on rough stock;
+   Sora takes the apparatus — designators, labels, checklists, controls. The
+   cream ground becomes board (#E9E3D8) with the panels as sheet, and every
+   radius goes flat, because a manual has trimmed edges and printed rules,
+   not soft cards. Panels are hung from a 2px head rule; briefs and lessons
+   carry a marked gutter down the left, the way a working copy does.
+
+   This layer loads after each page's own styles. It carries form only, and
+   it keeps every affordance underneath it: focus rings, print rules, reduced
+   motion, the 44px touch targets, and the checklists that make the manual
+   markable in the first place.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root{
+  --slab:'Bitter',ui-serif,serif;
+  --appar:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --board:#E9E3D8;
+  --sheet:#FCFBF7;
+  --m-ink:#251D28;
+  --m-rule:#C8BEAE;
+  --m-rule-firm:#9A8F7D;
+  --plum-deep:#3A2140;
+}
+
+body{font-family:var(--appar);font-size:16px;background:var(--board);color:var(--m-ink)}
+h1,h2,h3,h4,.side-h{font-family:var(--slab);font-weight:600;letter-spacing:-.004em}
+
+/* A manual has a cover line, not a 6.2rem display headline. */
+h1{font-size:clamp(1.95rem,4.2vw,3.05rem);line-height:1.12;margin:.35em 0 .3em;max-width:24ch}
+.section h2,.course-head h2,.read-guide h2,.brief h2,.lesson h2,h2{
+  font-size:clamp(1.4rem,2.8vw,2.05rem);line-height:1.2;max-width:30ch}
+.brief h3,.lesson h3,h3{font-size:clamp(1.02rem,1.6vw,1.2rem)}
+.hero{padding:clamp(2.6rem,6vw,4rem) 0 clamp(1.4rem,3vw,2rem)}
+header.myelin-cover,.hero.cover{background:var(--plum-deep)}
+
+/* Designators and labels are apparatus: tabular, tracked, ruled off. */
+.eyebrow,.ix-n,.progressText,.ck-count,.ck-note,.cite{font-family:var(--appar);
+  font-variant-numeric:tabular-nums;letter-spacing:.13em}
+.eyebrow{font-size:.7rem;font-weight:600;text-transform:uppercase;
+  border-left:2px solid currentColor;padding-left:.55rem;display:inline-block}
+.ix-n{font-size:.68rem;font-weight:600}
+
+/* Flat stock. No card ever regains a corner radius on this site. */
+.card,.brief,.lesson,.quiz,.record,.tool,.read-guide,.notice,.callout,.source,
+.output,.objective,.scenario,.example,.datum,.data div,.result,.finding,
+.disclaimer,.table,.cta,.side,.check,.attest,.answer,label.answer,fieldset,
+input,textarea,select,.teach,.misuse,.boundary-light,.next,.progress,.meter,
+.bar,.btn,.pill,.print,.tabs button,.tabs a,.lesson-nav button,.lesson-nav a{
+  border-radius:0}
+
+.brief,.lesson,.tool,.read-guide,.record,.quiz,.card{
+  background:var(--sheet);border:1px solid var(--m-rule);border-top:2px solid var(--m-ink)}
+.index a{background:var(--sheet);border:1px solid var(--m-rule);border-left:3px solid var(--plum-deep)}
+
+/* the marked gutter of a working copy */
+.brief,.lesson{border-left:3px solid var(--m-rule-firm)}
+.read-guide{border-left:4px solid var(--plum-deep)}
+
+.notice,.callout,.objective,.teach,.misuse,.boundary-light,.next{
+  border-radius:0;border-left-width:3px}
+
+/* Controls read as stamped, not as pills. */
+.btn,.pill,.print,.tabs button,.tabs a,.lesson-nav button,.lesson-nav a{
+  font-family:var(--appar);font-weight:600;font-size:.82rem;letter-spacing:.06em;
+  text-transform:uppercase}
+
+/* Checklists are the point of a manual: they get printed rules and room. */
+.checklist{border-top:2px solid var(--m-ink)}
+.checklist label{border-bottom:1px solid var(--m-rule);padding:.6rem .2rem;
+  font-family:var(--appar);font-size:.92rem;text-transform:none;letter-spacing:0}
+.checklist input{border-radius:0}
+
+/* Meters are gauges, not trophies. */
+.progress,.meter,.bar{height:4px;border-radius:0}
+.progress i,.meter i,.bar i{border-radius:0}
+
+table{font-family:var(--appar);font-variant-numeric:tabular-nums}
+th{font-family:var(--appar);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
+  border-bottom:2px solid var(--m-ink)}
+td{border-top:1px solid var(--m-rule)}
+.table{border:0;border-top:2px solid var(--m-ink);background:none}
+
+code{font-family:var(--appar);letter-spacing:.01em}
+
+/* The lede colour was set for a dark cover and then used on light stock,
+   where it measured 1.16:1 — in the accessibility tree and invisible on the
+   page. It now takes its colour from the ground it is actually on. */
+.lead,.lede{font-family:var(--slab);font-size:clamp(1.02rem,1.5vw,1.16rem);
+  line-height:1.5;color:inherit;max-width:66ch}
+
+/* the free guide's call to action inherited a light-on-deep-gold pair once the
+   gold was deepened for AA; the text follows the fill */
+.cta .btn,.cta a.btn{color:#FFFFFF}
+
+footer{border-top:3px solid #C9922F}
+
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
+select:focus-visible,summary:focus-visible{outline:3px solid var(--plum-deep);outline-offset:2px}
+.hero a:focus-visible,header a:focus-visible,.dash a:focus-visible,.side a:focus-visible{
+  outline-color:#F3D79A}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+@media(forced-colors:active){
+  .brief,.lesson,.tool,.read-guide,.record,.quiz,.card,.index a{border-color:CanvasText}
+  .progress i,.meter i,.bar i{background:Highlight}
+}
+@media print{
+  body{background:#fff;color:#000}
+  .brief,.lesson,.tool,.read-guide{background:#fff;border:0;border-top:1px solid #000;break-inside:avoid}
+  .checklist label{border-bottom:1px solid #000}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em}
+}
